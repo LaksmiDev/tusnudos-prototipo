@@ -53,11 +53,12 @@ const quipuResponses = [
   "Tu Maestro 11 carga una vibración alta. No todos los días puedes brillar — y eso está bien.",
   "Pregúntate: ¿qué nudo está pidiendo atención hoy? Tu cuerda principal o uno de los hilos?",
   "Recuerda: tu Karma 16 es transformación, no castigo. Lo que se cae, se cae para que algo nuevo pueda tejerse.",
-  "Diego es Camino 5 — su naturaleza es moverse. Tu 4 quiere construir. La tensión entre ustedes es el diseño, no un error.",
-  "Hoy es día 7. La introspección no es debilidad — es el nudo donde el khipu se afina.",
-  "Tu Alma 3 quiere expresarse. ¿Qué llevas guardado que necesita salir hoy?",
+  "Sebastián es Camino 6 — su naturaleza es construir. Tu 9 quiere soltar. La tensión entre ustedes es el diseño, no un error.",
+  "Hoy es Sol 2. La receptividad no es debilidad — es el nudo donde el khipu se afina.",
+  "Tu Alma 9 pide cierre. ¿Qué llevas cargando que ya no es tuyo?",
   "Iluminar a otros empieza por iluminarte a ti. Tu Maestro 11 lo sabe.",
-  "El año 5 te pide soltar el control. ¿Qué estás agarrando con demasiada fuerza?"
+  "El año 9 te pide soltar. ¿Qué estás agarrando con demasiada fuerza?",
+  "Tu Luna 6 siempre te devuelve al hogar. Llama a quien estás pensando."
 ];
 
 function sendChat() {
@@ -69,7 +70,7 @@ function sendChat() {
 
   // Mensaje del usuario
   const userMsg = document.createElement('div');
-  userMsg.className = 'msg msg-user';
+  userMsg.className = 'chat-out';
   userMsg.textContent = text;
   area.appendChild(userMsg);
 
@@ -79,7 +80,7 @@ function sendChat() {
   // Respuesta de Quipu (simulada con typing)
   setTimeout(() => {
     const botMsg = document.createElement('div');
-    botMsg.className = 'msg msg-bot';
+    botMsg.className = 'chat-in';
     botMsg.textContent = '...';
     area.appendChild(botMsg);
     area.scrollTop = area.scrollHeight;
@@ -112,28 +113,28 @@ const nudoData = {
     practica: 'Antes de responder hoy a cualquier petición, pregúntate: ¿esto suma a mi misión o me distrae de ella?'
   },
   mision: {
-    title: 'Misión', label: 'MISIÓN / DESTINO', num: '7',
-    name: 'El sabio buscador',
-    esencia: 'Tu misión es investigar lo que otros aceptan sin preguntar. Tu mente es bisturí: corta donde otros suponen.',
-    luz: 'Profundidad analítica. Encuentras la pregunta correcta antes que la respuesta. Sabes esperar.',
-    sombra: 'Te aíslas demasiado. Sobre-analizas hasta paralizar. Desconfías por defecto.',
-    practica: 'Hoy haz una pregunta a alguien sin necesitar tener tú la respuesta. Solo escucha.'
+    title: 'Misión', label: 'MISIÓN / DESTINO', num: '4',
+    name: 'La constructora',
+    esencia: 'Tu misión es construir lo que dura. Estructura, sistemas, espacios donde otros se cobijen. El 4 trabaja en silencio y deja huella.',
+    luz: 'Disciplina natural. Lo que prometes se cumple. La gente confía porque sabe que sostienes.',
+    sombra: 'Rigidez. Sobrecontrol. Confundir orden con vida. Negarte el juego.',
+    practica: 'Hoy haz una cosa fuera de plan — sólo una. Recuerda que tú eliges la estructura, no al revés.'
   },
   alma: {
-    title: 'Alma', label: 'NÚMERO DEL ALMA', num: '3',
-    name: 'La expresión creativa',
-    esencia: 'En lo más íntimo, tu alma quiere CREAR. Palabras, imágenes, color, conversación — necesitas un canal de salida o te enfermas.',
-    luz: 'Alegría contagiosa. Capacidad de poner luz en lo pesado. Comunicación viva.',
-    sombra: 'Dispersión. Hablar mucho y sentir poco. Esconder dolor con humor.',
-    practica: 'Escribe, dibuja o graba algo hoy — aunque nadie lo vea. Tu alma necesita la salida.'
+    title: 'Alma', label: 'NÚMERO DEL ALMA', num: '9',
+    name: 'Cierre · Compasión',
+    esencia: 'Tu alma vino a aprender a soltar. Lo que se va, se va por algo. El 9 ama desde la altura — no posee, libera.',
+    luz: 'Compasión profunda. Capacidad de despedirte sin amargura. Sabiduría temprana.',
+    sombra: 'Cargar dolor ajeno. Apegarte a finales. Sentir que siempre tú das y nadie sostiene.',
+    practica: 'Escribe el nombre de una cosa que estás cargando que ya no es tuya. Rómpelo. Suéltalo simbólicamente.'
   },
   personalidad: {
-    title: 'Personalidad', label: 'PERSONALIDAD', num: '4',
-    name: 'La constructora',
-    esencia: 'La gente te ve sólida, confiable, ordenada. Eres la que sostiene. La estructura visible de tu khipu.',
-    luz: 'Disciplina, lealtad, palabra que se cumple. Construyes lo que otros sueñan.',
-    sombra: 'Rigidez. Dificultad para soltar el control. Te falta espacio para jugar.',
-    practica: 'Rompe una rutina hoy — solo una. Para recordarte que tú eliges la estructura.'
+    title: 'Luna · Personalidad', label: 'LUNA / PERSONALIDAD', num: '6',
+    name: 'Cuidado · Hogar',
+    esencia: 'La gente te ve como hogar. Acoges sin pedirlo. Tu Luna 6 quiere cuidar — y a veces cuidas tanto que te olvidas tú.',
+    luz: 'Belleza natural. Capacidad de armonizar espacios. La gente se siente segura contigo.',
+    sombra: 'Asumir cargas que no son tuyas. Salvar a quien no pide rescate. Sobre-controlar a quienes amas.',
+    practica: 'Hoy pregúntale a alguien que cuidas: ¿qué necesitas tú? Y escucha sin querer arreglar.'
   },
   karma: {
     title: 'Karma', label: 'DEUDA KÁRMICA', num: '16',
