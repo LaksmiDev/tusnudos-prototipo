@@ -2820,12 +2820,13 @@ textarea.input {
 
 .maestro-hero {
   margin: 12px 16px 20px;
-  padding: 28px 22px;
+  padding: 0 0 22px;
   border-radius: var(--radius-lg);
   text-align: center;
   border: 1px solid var(--arena-suave);
   position: relative;
   overflow: hidden;
+  background: var(--blanco-puro);
 }
 .maestro-hero::before {
   content: '';
@@ -2835,20 +2836,68 @@ textarea.input {
   border-radius: 50%;
   background: currentColor;
   opacity: 0.06;
+  z-index: 0;
 }
-.maestro-glyph {
-  margin: 0 auto 12px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+
+/* ━━━ HERO IMAGE (PA2 slot 2) — banner cargado desde backend ━━━ */
+.maestro-hero-image {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16/9;
+  background: linear-gradient(135deg, var(--crema-algodon), var(--arena-suave));
+  overflow: hidden;
+  margin-bottom: 38px;
 }
+.maestro-hero-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  opacity: 0;
+  transition: opacity .45s ease;
+}
+.maestro-hero-image img.loaded { opacity: 1; }
+.maestro-hero-image::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, transparent 55%, rgba(0,0,0,0.32));
+  pointer-events: none;
+}
+.api-badge {
+  position: absolute;
+  bottom: 8px; left: 8px;
+  font-family: var(--font-cta);
+  font-size: 9px;
+  letter-spacing: 1.4px;
+  font-weight: 700;
+  color: var(--blanco-puro);
+  background: rgba(0,0,0,0.55);
+  padding: 4px 8px;
+  border-radius: 20px;
+  text-transform: uppercase;
+  backdrop-filter: blur(4px);
+  z-index: 2;
+}
+
 .maestro-num {
+  position: relative;
+  z-index: 2;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
   font-family: var(--font-display);
-  font-size: 56px;
+  font-size: 28px;
   font-weight: 900;
   line-height: 1;
-  color: inherit;
-  margin: 4px 0;
+  color: var(--blanco-puro);
+  background: var(--carbon-andino);
+  margin: -54px auto 10px;
+  border: 4px solid var(--blanco-puro);
+  box-shadow: 0 6px 16px rgba(0,0,0,0.18);
 }
 .maestro-label {
   font-family: var(--font-cta);
@@ -2857,6 +2906,9 @@ textarea.input {
   letter-spacing: 2.6px;
   color: var(--tx-faded);
   margin-bottom: 6px;
+  padding: 0 22px;
+  position: relative;
+  z-index: 2;
 }
 .maestro-name {
   font-family: var(--font-display);
@@ -2864,11 +2916,26 @@ textarea.input {
   font-weight: 700;
   color: var(--tx-carbon);
   margin-bottom: 4px;
+  padding: 0 22px;
+  position: relative;
+  z-index: 2;
 }
 .maestro-tagline {
   font-size: 12.5px;
   color: var(--tx-soft);
   font-style: italic;
+  padding: 0 22px;
+  position: relative;
+  z-index: 2;
+}
+.maestro-h4-hint {
+  font-size: 9px;
+  letter-spacing: 1.4px;
+  color: var(--oro-deep);
+  font-style: normal;
+  text-transform: none;
+  margin-left: 2px;
+  opacity: 0.85;
 }
 
 .maestro-h4 {
@@ -2910,15 +2977,36 @@ textarea.input {
   align-items: center;
   justify-content: center;
   margin-bottom: 4px;
+  overflow: hidden;
+  position: relative;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.06);
 }
-.sym-img.sym-color {
-  background: var(--oro-inti);
-  box-shadow: inset 0 0 0 4px var(--blanco-puro), 0 0 0 1px var(--arena-suave);
+.sym-img::after {
+  /* Skeleton shimmer mientras la imagen del backend baja */
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.6), transparent);
+  background-size: 200% 100%;
+  animation: symShimmer 1.4s infinite;
+  pointer-events: none;
+  z-index: 0;
 }
-.sym-img.sym-glyph {
-  font-family: var(--font-display);
-  font-size: 30px;
-  color: var(--carbon-andino);
+.sym-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  position: relative;
+  z-index: 1;
+  opacity: 0;
+  transition: opacity .4s ease;
+}
+.sym-img img.loaded { opacity: 1; }
+.sym-img img.loaded + ::after { display: none; }
+@keyframes symShimmer {
+  0%   { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
 }
 .sym-card small {
   font-family: var(--font-cta);
@@ -3053,8 +3141,8 @@ textarea.input {
 }
 
 .famoso-ava {
-  width: 50px;
-  height: 50px;
+  width: 54px;
+  height: 54px;
   border-radius: 50%;
   display: flex;
   align-items: center;
@@ -3064,8 +3152,21 @@ textarea.input {
   font-weight: 700;
   color: var(--blanco-puro);
   flex-shrink: 0;
-  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.12);
+  overflow: hidden;
+  position: relative;
+  border: 2px solid var(--blanco-puro);
 }
+.famoso-foto {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  border-radius: 50%;
+  opacity: 0;
+  transition: opacity .4s ease;
+}
+.famoso-foto.loaded { opacity: 1; }
 
 .famoso-info {
   flex: 1;
