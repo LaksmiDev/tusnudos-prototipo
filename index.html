@@ -223,6 +223,22 @@
       </span>
     </button>
 
+    <!-- Sabiduría Khipu — entry point al módulo de Arquetipos (PA1 + PA2) -->
+    <button class="dash-arquetipos" onclick="goTo('arquetipos')">
+      <span class="arq-glyph">
+        <svg viewBox="0 0 40 40" width="34" height="34" fill="none" stroke="currentColor" stroke-width="1.3">
+          <circle cx="20" cy="20" r="17" opacity=".35"/>
+          <circle cx="20" cy="20" r="11" opacity=".6"/>
+          <circle cx="20" cy="20" r="5" fill="currentColor" stroke="none"/>
+        </svg>
+      </span>
+      <span class="arq-text">
+        <strong>Los 11 Nudos Sagrados</strong>
+        <small>Explora cada arquetipo numerológico</small>
+      </span>
+      <span class="arq-chevron">→</span>
+    </button>
+
     <!-- Acceso rápido -->
     <div class="quick-actions">
       <button class="quick-action" onclick="goTo('khipu')">
@@ -1328,6 +1344,151 @@
         <span class="left">🇫🇷 Français</span><span class="check"></span>
       </li>
     </ul>
+  </div>
+</section>
+
+<!-- ====================================================================
+     27 · SABIDURÍA · LISTADO DE ARQUETIPOS (PA2 LISTADO + PA1 6ta ACTIVITY)
+     11 cards · 5+ datos dinámicos por card · alimentado por JSON
+     ==================================================================== -->
+<section class="screen" id="arquetipos">
+  <div class="status-bar"><span>9:41</span><span class="status-icons">●●● ◫ ▮</span></div>
+  <header class="page-head">
+    <button class="back-btn" onclick="goBack()">←</button>
+    <h2>Sabiduría Khipu</h2>
+    <button class="hd-action" aria-label="Buscar">⌕</button>
+  </header>
+
+  <div class="content arq-content">
+    <div class="arq-intro">
+      <span class="arq-eyebrow">LOS 11 NUDOS SAGRADOS</span>
+      <h3>Cada número guarda una sabiduría ancestral</h3>
+      <p>Toca un arquetipo para descubrir su maestro, símbolo, planeta regente y elementos correspondientes.</p>
+    </div>
+
+    <div class="arq-filter">
+      <button class="arq-chip active" onclick="filterArquetipos(this,'todos')">Todos</button>
+      <button class="arq-chip" onclick="filterArquetipos(this,'simples')">1 — 9</button>
+      <button class="arq-chip" onclick="filterArquetipos(this,'maestros')">Maestros</button>
+    </div>
+
+    <div class="arq-grid" id="arqGrid">
+      <!-- Las 11 cards se inyectan dinámicamente desde arquetiposData (simula consumo Retrofit + JSON) -->
+    </div>
+
+    <div class="arq-footnote">
+      <span>📡</span>
+      <p>Datos consumidos desde <code>arquetipos.json</code> · 11 elementos · 6 campos dinámicos cada uno</p>
+    </div>
+  </div>
+</section>
+
+<!-- ====================================================================
+     28 · SABIDURÍA · MAESTRO DEL ARQUETIPO (PA2 MAESTRO)
+     Mínimo 3 elementos visuales con "imágenes" (símbolo, planeta, elemento, color)
+     ==================================================================== -->
+<section class="screen" id="arquetipo-maestro">
+  <div class="status-bar"><span>9:41</span><span class="status-icons">●●● ◫ ▮</span></div>
+  <header class="page-head">
+    <button class="back-btn" onclick="goBack()">←</button>
+    <h2 id="maestroTitle">Maestro</h2>
+    <button class="hd-action" aria-label="Favorito">♡</button>
+  </header>
+
+  <div class="content maestro-content">
+    <!-- HERO del arquetipo (visual 1) -->
+    <div class="maestro-hero" id="maestroHero">
+      <div class="maestro-glyph">
+        <svg id="maestroSvg" viewBox="0 0 120 120" width="110" height="110"></svg>
+      </div>
+      <div class="maestro-num" id="maestroNum">9</div>
+      <div class="maestro-label" id="maestroLabel">MAESTRO DEL NUDO</div>
+      <div class="maestro-name" id="maestroName">La Compasiva</div>
+      <div class="maestro-tagline" id="maestroTagline">Cierre · Sabiduría · Servicio</div>
+    </div>
+
+    <!-- 4 ELEMENTOS VISUALES CON IMÁGENES (SVG = imagen) -->
+    <h4 class="maestro-h4">Símbolos sagrados</h4>
+    <div class="maestro-symbols">
+      <div class="sym-card">
+        <div class="sym-img sym-planet">
+          <svg viewBox="0 0 50 50" width="40" height="40" id="symPlanetSvg"></svg>
+        </div>
+        <small>PLANETA</small>
+        <strong id="symPlanetName">Marte</strong>
+      </div>
+      <div class="sym-card">
+        <div class="sym-img sym-element">
+          <svg viewBox="0 0 50 50" width="40" height="40" id="symElementSvg"></svg>
+        </div>
+        <small>ELEMENTO</small>
+        <strong id="symElementName">Fuego</strong>
+      </div>
+      <div class="sym-card">
+        <div class="sym-img sym-color" id="symColorSwatch"></div>
+        <small>COLOR SAGRADO</small>
+        <strong id="symColorName">Oro inti</strong>
+      </div>
+      <div class="sym-card">
+        <div class="sym-img sym-glyph">
+          <span id="symGlyph">♂</span>
+        </div>
+        <small>GLIFO ANDINO</small>
+        <strong id="symGlyphName">Símbolo</strong>
+      </div>
+    </div>
+
+    <!-- ESENCIA -->
+    <div class="maestro-essence">
+      <h4>Esencia del maestro</h4>
+      <p id="maestroEssence">El alma de este arquetipo vibra con la sabiduría de los ciclos completos.</p>
+    </div>
+
+    <!-- CTA al detalle -->
+    <button class="maestro-cta" onclick="openArquetipoDetalle()">
+      <span>Ver personalidades de este nudo</span>
+      <span class="cta-arrow">→</span>
+    </button>
+  </div>
+</section>
+
+<!-- ====================================================================
+     29 · SABIDURÍA · DETALLE DEL ARQUETIPO (PA2 DETALLE)
+     4+ personalidades famosas con imagen + datos relacionados
+     ==================================================================== -->
+<section class="screen" id="arquetipo-detalle">
+  <div class="status-bar"><span>9:41</span><span class="status-icons">●●● ◫ ▮</span></div>
+  <header class="page-head">
+    <button class="back-btn" onclick="goBack()">←</button>
+    <h2 id="detalleTitle">Personalidades</h2>
+    <button class="hd-action" onclick="openShare('khipu')" aria-label="Compartir">↗</button>
+  </header>
+
+  <div class="content detalle-content">
+    <div class="detalle-hero" id="detalleHero">
+      <div class="det-badge" id="detBadge">9</div>
+      <div>
+        <small id="detEyebrow">ALMAS CON ESTA VIBRACIÓN</small>
+        <h3 id="detTitle">El Nudo 9 en la historia</h3>
+      </div>
+    </div>
+
+    <p class="detalle-intro" id="detalleIntro">
+      Cuatro almas que tejieron su khipu con esta misma vibración. Sus vidas son un mapa de cómo este número se expresa cuando se vive desde la luz.
+    </p>
+
+    <div class="famosos-list" id="famososList">
+      <!-- 4+ personalidades inyectadas dinámicamente -->
+    </div>
+
+    <div class="detalle-related">
+      <h4>Compatibilidades del nudo</h4>
+      <div class="compat-row" id="compatRow">
+        <!-- Compatibilidades inyectadas -->
+      </div>
+    </div>
+
+    <button class="btn btn-ghost-block" onclick="goTo('arquetipos')">Explorar otros nudos</button>
   </div>
 </section>
 
