@@ -1,0 +1,754 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <meta name="theme-color" content="#1A171F">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="mobile-web-app-capable" content="yes">
+  <title>TusNudos — Prototipo</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700&family=Inter:wght@400;500;600&family=DM+Sans:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<div class="desktop-frame">
+<div class="phone-shell">
+<div class="app">
+
+<!-- ================================================
+     1. SPLASH
+     ================================================ -->
+<section class="screen active" id="splash" data-no-statusbar>
+  <div class="splash">
+    <div class="splash-logo">TusNudos</div>
+    <div class="splash-tagline">Los nudos no mienten</div>
+  </div>
+</section>
+
+<!-- ================================================
+     2. ONBOARDING I
+     ================================================ -->
+<section class="screen" id="onb1">
+  <div class="status-bar">
+    <span>9:41</span>
+    <span class="status-icons">●●● 􀙇 􀛨</span>
+  </div>
+  <div class="content no-nav" style="display:flex; flex-direction:column; height:100%;">
+    <div class="onb-illustration">
+      <div class="onb-circle gold">🪢</div>
+    </div>
+    <div style="flex:1;">
+      <h1 class="h-display text-center">Descifra tu historia</h1>
+      <p class="subtle text-center mt-12">Tu fecha de nacimiento y tu nombre tejen un khipu único. Te lo mostramos como un espejo.</p>
+    </div>
+    <div class="onb-dots">
+      <div class="onb-dot active"></div>
+      <div class="onb-dot"></div>
+      <div class="onb-dot"></div>
+    </div>
+    <div style="display:flex; gap:12px; margin-top:16px;">
+      <button class="btn btn-ghost" onclick="goTo('signup')" style="flex:1;">Saltar</button>
+      <button class="btn btn-primary" onclick="goTo('onb2')" style="flex:2;">Siguiente →</button>
+    </div>
+  </div>
+</section>
+
+<!-- ================================================
+     3. ONBOARDING II
+     ================================================ -->
+<section class="screen" id="onb2">
+  <div class="status-bar">
+    <span>9:41</span>
+    <span class="status-icons">●●● 􀙇 􀛨</span>
+  </div>
+  <div class="content no-nav" style="display:flex; flex-direction:column; height:100%;">
+    <div class="onb-illustration">
+      <div class="onb-circle purple">∞</div>
+    </div>
+    <div style="flex:1;">
+      <h1 class="h-display text-center">Conecta con quienes amas</h1>
+      <p class="subtle text-center mt-12">Compatibilidades, familia, círculo de amigas. Entrelaza nudos y descubre por qué se sienten así.</p>
+    </div>
+    <div class="onb-dots">
+      <div class="onb-dot"></div>
+      <div class="onb-dot active"></div>
+      <div class="onb-dot"></div>
+    </div>
+    <div style="display:flex; gap:12px; margin-top:16px;">
+      <button class="btn btn-ghost" onclick="goBack()" style="flex:1;">Atrás</button>
+      <button class="btn btn-primary" onclick="goTo('onb3')" style="flex:2;">Siguiente →</button>
+    </div>
+  </div>
+</section>
+
+<!-- ================================================
+     4. ONBOARDING III
+     ================================================ -->
+<section class="screen" id="onb3">
+  <div class="status-bar">
+    <span>9:41</span>
+    <span class="status-icons">●●● 􀙇 􀛨</span>
+  </div>
+  <div class="content no-nav" style="display:flex; flex-direction:column; height:100%;">
+    <div class="onb-illustration">
+      <div class="onb-circle mixed">✨</div>
+    </div>
+    <div style="flex:1;">
+      <h1 class="h-display text-center">Habla con Quipu</h1>
+      <p class="subtle text-center mt-12">Una IA andina que conoce tu khipu y responde con la voz de tus nudos. Pregúntale lo que sea.</p>
+    </div>
+    <div class="onb-dots">
+      <div class="onb-dot"></div>
+      <div class="onb-dot"></div>
+      <div class="onb-dot active"></div>
+    </div>
+    <div style="margin-top:16px;">
+      <button class="btn btn-primary" onclick="goTo('signup')">Descifrar mi historia →</button>
+      <button class="btn btn-link" onclick="goTo('login')" style="width:100%; margin-top:8px;">Ya tengo cuenta</button>
+    </div>
+  </div>
+</section>
+
+<!-- ================================================
+     5. REGISTRO
+     ================================================ -->
+<section class="screen" id="signup">
+  <div class="status-bar"><span>9:41</span><span class="status-icons">●●● 􀙇 􀛨</span></div>
+  <div class="top-bar">
+    <button class="back" onclick="goBack()">←</button>
+    <span class="title">Tu khipu</span>
+    <button class="right-action" onclick="goTo('login')">Entrar</button>
+  </div>
+  <div class="content no-nav">
+    <h1 class="h-display mb-12">Empieza gratis</h1>
+    <p class="subtle mb-20">Necesitamos solo dos cosas para tejer tus nudos.</p>
+
+    <div class="input-group">
+      <label class="input-label">Nombre completo (como en tu DNI)</label>
+      <input type="text" class="input" placeholder="Ej. María Fernanda López">
+    </div>
+
+    <div class="input-group">
+      <label class="input-label">Fecha de nacimiento</label>
+      <input type="date" class="input" value="1996-03-21">
+    </div>
+
+    <div class="input-group">
+      <label class="input-label">Email</label>
+      <input type="email" class="input" placeholder="tu@correo.com">
+    </div>
+
+    <div class="input-group">
+      <label class="input-label">Contraseña</label>
+      <input type="password" class="input" placeholder="••••••••">
+    </div>
+
+    <button class="btn btn-primary mt-16" onclick="goTo('home')">Descifrar mis nudos →</button>
+    <p class="tiny text-center mt-12">Al continuar aceptas los Términos y Política de Privacidad.</p>
+  </div>
+</section>
+
+<!-- ================================================
+     6. LOGIN
+     ================================================ -->
+<section class="screen" id="login">
+  <div class="status-bar"><span>9:41</span><span class="status-icons">●●● 􀙇 􀛨</span></div>
+  <div class="top-bar">
+    <button class="back" onclick="goBack()">←</button>
+    <span class="title">Bienvenida de vuelta</span>
+    <span></span>
+  </div>
+  <div class="content no-nav" style="display:flex; flex-direction:column; height:100%;">
+    <div class="text-center mt-20 mb-20">
+      <div class="splash-logo" style="font-size:36px;">TusNudos</div>
+      <p class="subtle mt-8">Tus nudos te esperan</p>
+    </div>
+
+    <div class="input-group mt-20">
+      <label class="input-label">Email</label>
+      <input type="email" class="input" placeholder="tu@correo.com" value="maria@ejemplo.com">
+    </div>
+
+    <div class="input-group">
+      <label class="input-label">Contraseña</label>
+      <input type="password" class="input" placeholder="••••••••" value="••••••••">
+    </div>
+
+    <button class="btn btn-link" style="align-self:flex-end; margin:0 0 12px;">¿Olvidaste tu contraseña?</button>
+
+    <button class="btn btn-primary" onclick="goTo('home')">Entrar a mi khipu</button>
+
+    <div class="text-center mt-20">
+      <span class="subtle">¿Aún no eres parte? </span>
+      <button class="btn btn-link" onclick="goTo('signup')" style="display:inline; padding:0;">Crear cuenta</button>
+    </div>
+  </div>
+</section>
+
+<!-- ================================================
+     7. HOME
+     ================================================ -->
+<section class="screen" id="home">
+  <div class="status-bar"><span>9:41</span><span class="status-icons">●●● 􀙇 􀛨</span></div>
+  <div class="top-bar">
+    <span></span>
+    <span class="title">TusNudos</span>
+    <button class="right-action" onclick="goTo('profile')">👤</button>
+  </div>
+
+  <div class="content">
+    <div class="home-greeting">
+      <p class="subtle">Buenos días, María 🌅</p>
+      <h2 class="h-section">Hoy es un día <span class="gold">7</span></h2>
+    </div>
+
+    <div class="daily-vibe">
+      <div class="label">Vibración del día</div>
+      <div class="big-num">7</div>
+      <div class="desc">Día de introspección. Tu intuición está afilada — escucha la voz interior antes de decidir nada importante.</div>
+    </div>
+
+    <div class="quick-actions">
+      <button class="quick-action" onclick="goTo('khipu')">
+        <div class="qa-icon">🪢</div>
+        <div class="qa-title">Mi Khipu</div>
+        <div class="qa-desc">27 nudos tejidos</div>
+      </button>
+      <button class="quick-action" onclick="goTo('chat')">
+        <div class="qa-icon">💬</div>
+        <div class="qa-title">Quipu</div>
+        <div class="qa-desc">Pregúntale</div>
+      </button>
+      <button class="quick-action" onclick="goTo('compat')">
+        <div class="qa-icon">∞</div>
+        <div class="qa-title">Entrelazado</div>
+        <div class="qa-desc">Compatibilidad</div>
+      </button>
+      <button class="quick-action" onclick="goTo('solar')">
+        <div class="qa-icon">☀️</div>
+        <div class="qa-title">Retorno Solar</div>
+        <div class="qa-desc">Tu año 2026</div>
+      </button>
+    </div>
+
+    <h3 class="h-section mt-16">Tu semana</h3>
+    <div class="card card-clickable" onclick="goTo('solar')">
+      <div class="flex-between">
+        <div>
+          <div class="tiny">MES PERSONAL</div>
+          <div class="h-card mt-8">Mes 4 — Cimientos</div>
+          <div class="subtle">Construye estructura. Lo que siembres este mes durará.</div>
+        </div>
+        <div style="font-family:var(--font-display); font-size:36px;" class="gold">4</div>
+      </div>
+    </div>
+
+    <div class="card card-clickable" onclick="goTo('diary')">
+      <div class="flex-between">
+        <div>
+          <div class="tiny">DIARIO DEL ALMA</div>
+          <div class="h-card mt-8">3 entradas esta semana</div>
+          <div class="subtle">Tu última reflexión fue hace 2 días.</div>
+        </div>
+        <div style="font-size:28px;">📖</div>
+      </div>
+    </div>
+  </div>
+
+  <nav class="bottom-nav">
+    <button class="nav-item active" onclick="goTo('home')"><span class="ico">🏠</span><span>Inicio</span></button>
+    <button class="nav-item" onclick="goTo('khipu')"><span class="ico">🪢</span><span>Khipu</span></button>
+    <button class="nav-item" onclick="goTo('compat')"><span class="ico">∞</span><span>Entrelazado</span></button>
+    <button class="nav-item" onclick="goTo('chat')"><span class="ico">💬</span><span>Quipu</span></button>
+    <button class="nav-item" onclick="goTo('profile')"><span class="ico">👤</span><span>Perfil</span></button>
+  </nav>
+</section>
+
+<!-- ================================================
+     8. KHIPU PERSONAL
+     ================================================ -->
+<section class="screen" id="khipu">
+  <div class="status-bar"><span>9:41</span><span class="status-icons">●●● 􀙇 􀛨</span></div>
+  <div class="top-bar">
+    <button class="back" onclick="goTo('home')">←</button>
+    <span class="title">Mi Khipu</span>
+    <button class="right-action">⋯</button>
+  </div>
+
+  <div class="content">
+    <div class="text-center mb-16">
+      <p class="tiny">MARÍA FERNANDA LÓPEZ · 21·03·1996</p>
+      <h1 class="h-display mt-8">Cuerda Principal</h1>
+    </div>
+
+    <div class="card-elevated text-center">
+      <div class="tiny">CAMINO DE VIDA</div>
+      <div style="font-family:var(--font-display); font-size:64px; font-weight:700;" class="gold">11</div>
+      <span class="chip chip-master">Maestro 11</span>
+      <p class="subtle mt-12">La iluminadora. Tu propósito es inspirar y elevar a otros con tu intuición.</p>
+    </div>
+
+    <h3 class="h-section mt-20">Nudos Estáticos</h3>
+
+    <div class="khipu-main-cord"></div>
+
+    <div class="khipu-cord">
+      <div class="nudo" onclick="showNudoDetail('Camino')">
+        <div class="nudo-circle">11</div>
+        <div class="nudo-info">
+          <div class="nudo-name">Camino de Vida</div>
+          <div class="nudo-value">Maestro · La iluminadora</div>
+        </div>
+        <span class="chip chip-master">M</span>
+      </div>
+
+      <div class="nudo" onclick="showNudoDetail('Misión')">
+        <div class="nudo-circle">7</div>
+        <div class="nudo-info">
+          <div class="nudo-name">Misión / Destino</div>
+          <div class="nudo-value">El sabio buscador</div>
+        </div>
+      </div>
+
+      <div class="nudo" onclick="showNudoDetail('Alma')">
+        <div class="nudo-circle">3</div>
+        <div class="nudo-info">
+          <div class="nudo-name">Alma</div>
+          <div class="nudo-value">La expresión creativa</div>
+        </div>
+      </div>
+
+      <div class="nudo" onclick="showNudoDetail('Personalidad')">
+        <div class="nudo-circle">4</div>
+        <div class="nudo-info">
+          <div class="nudo-name">Personalidad</div>
+          <div class="nudo-value">La constructora</div>
+        </div>
+      </div>
+
+      <div class="nudo" onclick="showNudoDetail('Karma')">
+        <div class="nudo-circle">16</div>
+        <div class="nudo-info">
+          <div class="nudo-name">Deuda Kármica</div>
+          <div class="nudo-value">La torre · Transformación</div>
+        </div>
+        <span class="chip chip-karma">K</span>
+      </div>
+
+      <div class="nudo" onclick="showNudoDetail('Puente')">
+        <div class="nudo-circle">2</div>
+        <div class="nudo-info">
+          <div class="nudo-name">Puente Iniciático</div>
+          <div class="nudo-value">Diplomacia y equilibrio</div>
+        </div>
+      </div>
+    </div>
+
+    <button class="btn btn-ghost mt-16" onclick="goTo('chat')">💬 Pregúntale a Quipu sobre tu khipu</button>
+  </div>
+
+  <nav class="bottom-nav">
+    <button class="nav-item" onclick="goTo('home')"><span class="ico">🏠</span><span>Inicio</span></button>
+    <button class="nav-item active" onclick="goTo('khipu')"><span class="ico">🪢</span><span>Khipu</span></button>
+    <button class="nav-item" onclick="goTo('compat')"><span class="ico">∞</span><span>Entrelazado</span></button>
+    <button class="nav-item" onclick="goTo('chat')"><span class="ico">💬</span><span>Quipu</span></button>
+    <button class="nav-item" onclick="goTo('profile')"><span class="ico">👤</span><span>Perfil</span></button>
+  </nav>
+</section>
+
+<!-- ================================================
+     9. ENTRELAZADO (COMPATIBILIDAD)
+     ================================================ -->
+<section class="screen" id="compat">
+  <div class="status-bar"><span>9:41</span><span class="status-icons">●●● 􀙇 􀛨</span></div>
+  <div class="top-bar">
+    <button class="back" onclick="goTo('home')">←</button>
+    <span class="title">Entrelazado</span>
+    <button class="right-action" onclick="goTo('circulo')">+ Añadir</button>
+  </div>
+
+  <div class="content">
+    <div class="compat-header">
+      <div class="compat-avatar a">M</div>
+      <div class="compat-vs">∞</div>
+      <div class="compat-avatar b">D</div>
+    </div>
+
+    <div class="text-center">
+      <h2 class="h-section">María & Diego</h2>
+      <p class="subtle">Tu khipu entrelazado con el suyo</p>
+    </div>
+
+    <div class="compat-score">
+      <div class="num">86</div>
+      <div class="label">Afinidad Andina</div>
+    </div>
+
+    <div class="card">
+      <div class="h-card">🪢 Camino con Camino</div>
+      <div class="flex-between mt-8">
+        <span class="subtle">Tu 11 con su 5</span>
+        <span class="chip chip-sacred">Resonancia alta</span>
+      </div>
+      <p class="subtle mt-12">El Maestro 11 y el 5 son polos magnéticos. Tu intuición lo despierta; su libertad te aterriza.</p>
+    </div>
+
+    <div class="card">
+      <div class="h-card">💛 Alma con Alma</div>
+      <div class="flex-between mt-8">
+        <span class="subtle">Tu 3 con su 3</span>
+        <span class="chip">Espejo perfecto</span>
+      </div>
+      <p class="subtle mt-12">Ambos buscan expresar. Cuidado con la competencia creativa.</p>
+    </div>
+
+    <div class="card">
+      <div class="h-card">⚡ Tensión productiva</div>
+      <div class="flex-between mt-8">
+        <span class="subtle">Tu 4 con su 5</span>
+        <span class="chip chip-karma">Fricción</span>
+      </div>
+      <p class="subtle mt-12">Tu estructura choca con su movimiento. Esta tensión es el motor — no la apaguen.</p>
+    </div>
+
+    <button class="btn btn-primary mt-16" onclick="goTo('chat')">Preguntar a Quipu sobre esta relación</button>
+  </div>
+
+  <nav class="bottom-nav">
+    <button class="nav-item" onclick="goTo('home')"><span class="ico">🏠</span><span>Inicio</span></button>
+    <button class="nav-item" onclick="goTo('khipu')"><span class="ico">🪢</span><span>Khipu</span></button>
+    <button class="nav-item active" onclick="goTo('compat')"><span class="ico">∞</span><span>Entrelazado</span></button>
+    <button class="nav-item" onclick="goTo('chat')"><span class="ico">💬</span><span>Quipu</span></button>
+    <button class="nav-item" onclick="goTo('profile')"><span class="ico">👤</span><span>Perfil</span></button>
+  </nav>
+</section>
+
+<!-- ================================================
+     10. CHAT CON QUIPU
+     ================================================ -->
+<section class="screen" id="chat">
+  <div class="status-bar"><span>9:41</span><span class="status-icons">●●● 􀙇 􀛨</span></div>
+  <div class="top-bar">
+    <button class="back" onclick="goTo('home')">←</button>
+    <div style="display:flex; flex-direction:column; align-items:center;">
+      <span class="title">Quipu</span>
+      <span class="tiny gold">● en línea</span>
+    </div>
+    <button class="right-action">⋯</button>
+  </div>
+
+  <div class="chat-area" id="chatArea">
+    <div class="msg msg-bot">Bienvenida, María 🪢 Soy Quipu. He leído tu khipu — Maestro 11 con misión 7. ¿En qué nudo te detienes hoy?</div>
+    <div class="msg msg-user">Hoy me siento sin energía, no sé por qué</div>
+    <div class="msg msg-bot">Hoy es día 7 para ti — un día de introspección, no de acción. No es falta de energía: tu cuerda interna te pide silencio. Tu Maestro 11 brilla cuando descansa primero. ¿Qué señales has estado ignorando?</div>
+  </div>
+
+  <div class="chat-input-bar">
+    <input type="text" class="chat-input" placeholder="Escribe a Quipu..." id="chatInput">
+    <button class="chat-send" onclick="sendChat()">➤</button>
+  </div>
+</section>
+
+<!-- ================================================
+     11. RETORNO SOLAR
+     ================================================ -->
+<section class="screen" id="solar">
+  <div class="status-bar"><span>9:41</span><span class="status-icons">●●● 􀙇 􀛨</span></div>
+  <div class="top-bar">
+    <button class="back" onclick="goTo('home')">←</button>
+    <span class="title">Retorno Solar</span>
+    <span></span>
+  </div>
+
+  <div class="content">
+    <p class="subtle text-center">Tu ciclo desde 21·03·2026</p>
+
+    <div class="cycle-ring">
+      <svg viewBox="0 0 240 240">
+        <circle cx="120" cy="120" r="100" fill="none" stroke="rgba(245,240,230,0.08)" stroke-width="14"/>
+        <circle cx="120" cy="120" r="100" fill="none" stroke="url(#g1)" stroke-width="14"
+                stroke-dasharray="628" stroke-dashoffset="251" stroke-linecap="round"/>
+        <defs>
+          <linearGradient id="g1" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0%" stop-color="#D4AF37"/>
+            <stop offset="100%" stop-color="#7B2D8E"/>
+          </linearGradient>
+        </defs>
+      </svg>
+      <div class="cycle-center">
+        <div class="y-num">5</div>
+        <div class="y-label">Año Personal</div>
+      </div>
+    </div>
+
+    <div class="card-elevated">
+      <div class="tiny">AÑO 5 · LIBERTAD Y CAMBIO</div>
+      <p class="subtle mt-8">Después de la estructura del 4, viene el viento. Este año todo se mueve — viaje, trabajo, relaciones. Suelta el control y sigue la corriente.</p>
+    </div>
+
+    <h3 class="h-section mt-20">Mes a mes</h3>
+
+    <div class="card card-clickable">
+      <div class="flex-between">
+        <div>
+          <div class="tiny">MARZO · AHORA</div>
+          <div class="h-card mt-8">Mes Personal 4</div>
+        </div>
+        <span class="chip">Activo</span>
+      </div>
+    </div>
+
+    <div class="card card-clickable">
+      <div class="flex-between">
+        <div>
+          <div class="tiny">ABRIL</div>
+          <div class="h-card mt-8">Mes Personal 5 — Cambios</div>
+        </div>
+        <div style="font-family:var(--font-display); font-size:24px;" class="gold">5</div>
+      </div>
+    </div>
+
+    <div class="card card-clickable">
+      <div class="flex-between">
+        <div>
+          <div class="tiny">MAYO</div>
+          <div class="h-card mt-8">Mes Personal 6 — Amor</div>
+        </div>
+        <div style="font-family:var(--font-display); font-size:24px;" class="gold">6</div>
+      </div>
+    </div>
+
+    <div class="card card-clickable">
+      <div class="flex-between">
+        <div>
+          <div class="tiny">JUNIO</div>
+          <div class="h-card mt-8">Mes Personal 7 — Pausa</div>
+        </div>
+        <div style="font-family:var(--font-display); font-size:24px;" class="gold">7</div>
+      </div>
+    </div>
+  </div>
+
+  <nav class="bottom-nav">
+    <button class="nav-item" onclick="goTo('home')"><span class="ico">🏠</span><span>Inicio</span></button>
+    <button class="nav-item" onclick="goTo('khipu')"><span class="ico">🪢</span><span>Khipu</span></button>
+    <button class="nav-item" onclick="goTo('compat')"><span class="ico">∞</span><span>Entrelazado</span></button>
+    <button class="nav-item" onclick="goTo('chat')"><span class="ico">💬</span><span>Quipu</span></button>
+    <button class="nav-item" onclick="goTo('profile')"><span class="ico">👤</span><span>Perfil</span></button>
+  </nav>
+</section>
+
+<!-- ================================================
+     12. CÍRCULO DE AMIGAS
+     ================================================ -->
+<section class="screen" id="circulo">
+  <div class="status-bar"><span>9:41</span><span class="status-icons">●●● 􀙇 􀛨</span></div>
+  <div class="top-bar">
+    <button class="back" onclick="goTo('compat')">←</button>
+    <span class="title">Círculo</span>
+    <button class="right-action">+</button>
+  </div>
+
+  <div class="content">
+    <h1 class="h-display mb-12">Tu círculo</h1>
+    <p class="subtle mb-20">Las personas tejidas en tu khipu.</p>
+
+    <div class="friend-row" onclick="goTo('compat')">
+      <div class="friend-avatar" style="background:linear-gradient(135deg, #7B2D8E, #C73E3E);">D</div>
+      <div class="friend-info">
+        <div class="friend-name">Diego (pareja)</div>
+        <div class="friend-sub">Camino 5 · Afinidad 86</div>
+      </div>
+      <span class="chip chip-sacred">86</span>
+    </div>
+
+    <div class="friend-row" onclick="goTo('compat')">
+      <div class="friend-avatar" style="background:linear-gradient(135deg, #D4AF37, #7B2D8E);">L</div>
+      <div class="friend-info">
+        <div class="friend-name">Lucía (hermana)</div>
+        <div class="friend-sub">Camino 3 · Afinidad 78</div>
+      </div>
+      <span class="chip">78</span>
+    </div>
+
+    <div class="friend-row" onclick="goTo('compat')">
+      <div class="friend-avatar" style="background:linear-gradient(135deg, #4A7C59, #D4AF37);">A</div>
+      <div class="friend-info">
+        <div class="friend-name">Ana (mejor amiga)</div>
+        <div class="friend-sub">Camino 11 · Afinidad 92</div>
+      </div>
+      <span class="chip chip-master">92</span>
+    </div>
+
+    <div class="friend-row" onclick="goTo('compat')">
+      <div class="friend-avatar" style="background:linear-gradient(135deg, #C73E3E, #2D2A33);">M</div>
+      <div class="friend-info">
+        <div class="friend-name">Mamá</div>
+        <div class="friend-sub">Camino 9 · Afinidad 71</div>
+      </div>
+      <span class="chip">71</span>
+    </div>
+
+    <div class="friend-row" onclick="goTo('compat')">
+      <div class="friend-avatar" style="background:linear-gradient(135deg, #7B2D8E, #4A7C59);">P</div>
+      <div class="friend-info">
+        <div class="friend-name">Pao (trabajo)</div>
+        <div class="friend-sub">Camino 8 · Afinidad 64</div>
+      </div>
+      <span class="chip">64</span>
+    </div>
+
+    <button class="btn btn-ghost mt-16">+ Tejer a alguien nuevo</button>
+  </div>
+
+  <nav class="bottom-nav">
+    <button class="nav-item" onclick="goTo('home')"><span class="ico">🏠</span><span>Inicio</span></button>
+    <button class="nav-item" onclick="goTo('khipu')"><span class="ico">🪢</span><span>Khipu</span></button>
+    <button class="nav-item active" onclick="goTo('compat')"><span class="ico">∞</span><span>Entrelazado</span></button>
+    <button class="nav-item" onclick="goTo('chat')"><span class="ico">💬</span><span>Quipu</span></button>
+    <button class="nav-item" onclick="goTo('profile')"><span class="ico">👤</span><span>Perfil</span></button>
+  </nav>
+</section>
+
+<!-- ================================================
+     13. DIARIO DEL ALMA
+     ================================================ -->
+<section class="screen" id="diary">
+  <div class="status-bar"><span>9:41</span><span class="status-icons">●●● 􀙇 􀛨</span></div>
+  <div class="top-bar">
+    <button class="back" onclick="goTo('home')">←</button>
+    <span class="title">Diario del Alma</span>
+    <button class="right-action">🔍</button>
+  </div>
+
+  <div class="content">
+    <h1 class="h-display mb-12">Tus reflexiones</h1>
+    <p class="subtle mb-20">Lo que te dijo el día.</p>
+
+    <div class="diary-day">
+      <div class="diary-date"><div class="d">25</div><div class="m">MAY</div></div>
+      <div class="diary-content">
+        <div class="diary-title">Día 7 · Silencio</div>
+        <p class="diary-excerpt">Hoy no quise hablar con nadie y me sentí culpable. Quipu me dijo que el 7 pide soledad, no aislamiento. Aprendiendo la diferencia.</p>
+      </div>
+    </div>
+
+    <div class="diary-day">
+      <div class="diary-date"><div class="d">23</div><div class="m">MAY</div></div>
+      <div class="diary-content">
+        <div class="diary-title">Día 5 · Algo se movió</div>
+        <p class="diary-excerpt">Conocí a alguien en el trabajo. Camino 11 también. Algo en mí se reconoció. Veré si es real o resonancia momentánea.</p>
+      </div>
+    </div>
+
+    <div class="diary-day">
+      <div class="diary-date"><div class="d">20</div><div class="m">MAY</div></div>
+      <div class="diary-content">
+        <div class="diary-title">Día 2 · Diego</div>
+        <p class="diary-excerpt">La discusión de anoche fue clásica de un 4 con un 5. Yo quería plan, él quería improvisar. Hoy entendí que no es defecto suyo, es su naturaleza.</p>
+      </div>
+    </div>
+
+    <div class="diary-day">
+      <div class="diary-date"><div class="d">15</div><div class="m">MAY</div></div>
+      <div class="diary-content">
+        <div class="diary-title">Día 6 · Equilibrio</div>
+        <p class="diary-excerpt">Día tranquilo. Cocinamos juntos. Sentí la armonía del 6 sin forzarla.</p>
+      </div>
+    </div>
+  </div>
+
+  <button class="fab" onclick="alert('Nueva entrada del diario')">+</button>
+
+  <nav class="bottom-nav">
+    <button class="nav-item" onclick="goTo('home')"><span class="ico">🏠</span><span>Inicio</span></button>
+    <button class="nav-item" onclick="goTo('khipu')"><span class="ico">🪢</span><span>Khipu</span></button>
+    <button class="nav-item" onclick="goTo('compat')"><span class="ico">∞</span><span>Entrelazado</span></button>
+    <button class="nav-item" onclick="goTo('chat')"><span class="ico">💬</span><span>Quipu</span></button>
+    <button class="nav-item" onclick="goTo('profile')"><span class="ico">👤</span><span>Perfil</span></button>
+  </nav>
+</section>
+
+<!-- ================================================
+     14. PERFIL
+     ================================================ -->
+<section class="screen" id="profile">
+  <div class="status-bar"><span>9:41</span><span class="status-icons">●●● 􀙇 􀛨</span></div>
+  <div class="top-bar">
+    <button class="back" onclick="goTo('home')">←</button>
+    <span class="title">Perfil</span>
+    <button class="right-action">⚙</button>
+  </div>
+
+  <div class="content">
+    <div class="profile-header">
+      <div class="avatar">M</div>
+      <h2 class="h-section" style="margin:8px 0 4px;">María F. López</h2>
+      <p class="tiny">21·03·1996 · Camino 11</p>
+      <div class="flex-row gap-8 mt-12">
+        <span class="chip chip-master">Maestro 11</span>
+        <span class="chip chip-karma">Karma 16</span>
+      </div>
+    </div>
+
+    <ul class="menu-list">
+      <li class="menu-item" onclick="goTo('khipu')">
+        <span class="left"><span class="ico">🪢</span> Mi Khipu Personal</span>
+        <span class="chevron">›</span>
+      </li>
+      <li class="menu-item" onclick="goTo('solar')">
+        <span class="left"><span class="ico">☀️</span> Mi Retorno Solar</span>
+        <span class="chevron">›</span>
+      </li>
+      <li class="menu-item" onclick="goTo('diary')">
+        <span class="left"><span class="ico">📖</span> Diario del Alma</span>
+        <span class="chevron">›</span>
+      </li>
+      <li class="menu-item" onclick="goTo('circulo')">
+        <span class="left"><span class="ico">👥</span> Mi Círculo</span>
+        <span class="chevron">›</span>
+      </li>
+      <li class="menu-item">
+        <span class="left"><span class="ico">🔔</span> Notificaciones</span>
+        <span class="chevron">›</span>
+      </li>
+      <li class="menu-item">
+        <span class="left"><span class="ico">💎</span> Plan Premium</span>
+        <span class="chevron">›</span>
+      </li>
+      <li class="menu-item">
+        <span class="left"><span class="ico">🌐</span> Idioma · Español</span>
+        <span class="chevron">›</span>
+      </li>
+      <li class="menu-item">
+        <span class="left"><span class="ico">❓</span> Ayuda</span>
+        <span class="chevron">›</span>
+      </li>
+      <li class="menu-item" onclick="goTo('login')">
+        <span class="left"><span class="ico">🚪</span> Cerrar sesión</span>
+        <span class="chevron">›</span>
+      </li>
+    </ul>
+
+    <p class="tiny text-center mt-20">TusNudos v1.0 · Los nudos no mienten 🪢</p>
+  </div>
+
+  <nav class="bottom-nav">
+    <button class="nav-item" onclick="goTo('home')"><span class="ico">🏠</span><span>Inicio</span></button>
+    <button class="nav-item" onclick="goTo('khipu')"><span class="ico">🪢</span><span>Khipu</span></button>
+    <button class="nav-item" onclick="goTo('compat')"><span class="ico">∞</span><span>Entrelazado</span></button>
+    <button class="nav-item" onclick="goTo('chat')"><span class="ico">💬</span><span>Quipu</span></button>
+    <button class="nav-item active" onclick="goTo('profile')"><span class="ico">👤</span><span>Perfil</span></button>
+  </nav>
+</section>
+
+</div><!-- /app -->
+</div><!-- /phone-shell -->
+</div><!-- /desktop-frame -->
+
+<script src="app.js"></script>
+</body>
+</html>
