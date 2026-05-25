@@ -1396,11 +1396,10 @@
   </header>
 
   <div class="content maestro-content">
-    <!-- HERO del arquetipo · imagen desde backend (PA2 slot 2) -->
+    <!-- HERO del arquetipo (visual 1) -->
     <div class="maestro-hero" id="maestroHero">
-      <div class="maestro-hero-image">
-        <img id="maestroHeroImg" src="" alt="" loading="lazy">
-        <span class="api-badge">📡 backend</span>
+      <div class="maestro-glyph">
+        <svg id="maestroSvg" viewBox="0 0 120 120" width="110" height="110"></svg>
       </div>
       <div class="maestro-num" id="maestroNum">9</div>
       <div class="maestro-label" id="maestroLabel">MAESTRO DEL NUDO</div>
@@ -1408,33 +1407,31 @@
       <div class="maestro-tagline" id="maestroTagline">Cierre · Sabiduría · Servicio</div>
     </div>
 
-    <!-- 4 SÍMBOLOS SAGRADOS · imágenes desde backend (PA2 slot 2) -->
-    <h4 class="maestro-h4">Símbolos sagrados <span class="maestro-h4-hint">· cargados desde API</span></h4>
+    <!-- 4 ELEMENTOS VISUALES CON IMÁGENES (SVG = imagen) -->
+    <h4 class="maestro-h4">Símbolos sagrados</h4>
     <div class="maestro-symbols">
       <div class="sym-card">
         <div class="sym-img sym-planet">
-          <img id="symPlanetImg" src="" alt="planeta" loading="lazy">
+          <svg viewBox="0 0 50 50" width="40" height="40" id="symPlanetSvg"></svg>
         </div>
         <small>PLANETA</small>
         <strong id="symPlanetName">Marte</strong>
       </div>
       <div class="sym-card">
         <div class="sym-img sym-element">
-          <img id="symElementImg" src="" alt="elemento" loading="lazy">
+          <svg viewBox="0 0 50 50" width="40" height="40" id="symElementSvg"></svg>
         </div>
         <small>ELEMENTO</small>
         <strong id="symElementName">Fuego</strong>
       </div>
       <div class="sym-card">
-        <div class="sym-img sym-color">
-          <img id="symColorImg" src="" alt="color sagrado" loading="lazy">
-        </div>
+        <div class="sym-img sym-color" id="symColorSwatch"></div>
         <small>COLOR SAGRADO</small>
         <strong id="symColorName">Oro inti</strong>
       </div>
       <div class="sym-card">
         <div class="sym-img sym-glyph">
-          <img id="symGlyphImg" src="" alt="glifo" loading="lazy">
+          <span id="symGlyph">♂</span>
         </div>
         <small>GLIFO ANDINO</small>
         <strong id="symGlyphName">Símbolo</strong>

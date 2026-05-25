@@ -345,79 +345,19 @@ function selectPlan(card, plan) {
    SABIDURÍA KHIPU — ARQUETIPOS (PA1 + PA2)
    Datos simulan respuesta JSON consumida con Retrofit
    Cada arquetipo tiene 6 datos dinámicos (cumple PA1: 5+ datos)
-   + 5 imágenes URL por arquetipo cargadas desde "backend" (PA2 master-detail)
    ============================================ */
-
-/* Mock del endpoint base — en producción esto sería: https://api.tusnudos.com/v1 */
-const API_BASE = 'https://picsum.photos/seed';
-
 const arquetiposData = [
-  { numero: 1,  nombre: 'El Iniciador',   tagline: 'Liderazgo · Acción · Origen',         color: '#D4AF37', colorName: 'Oro inti',       elemento: 'Fuego',  planeta: 'Sol',      glifo: '☉', tipo: 'simple',  esencia: 'El nudo que inaugura. Cada khipu empieza con un 1 — la voluntad de ser. Liderazgo natural, energía de origen, pionero por derecho propio.',
-    heroUrl:     `${API_BASE}/khipu-arq-1-iniciador/640/360`,
-    planetaUrl:  `${API_BASE}/planeta-sol-inti/200/200`,
-    elementoUrl: `${API_BASE}/elemento-fuego-1/200/200`,
-    colorUrl:    `${API_BASE}/textil-andino-oro/200/200`,
-    glifoUrl:    `${API_BASE}/petroglifo-andino-1/200/200` },
-  { numero: 2,  nombre: 'La Diplomática', tagline: 'Equilibrio · Receptividad · Pareja',   color: '#A155B4', colorName: 'Morado tenue',   elemento: 'Agua',   planeta: 'Luna',     glifo: '☽', tipo: 'simple',  esencia: 'El nudo del puente. Une lo que está separado. Tu sabiduría es la escucha — donde el 1 impone, el 2 teje.',
-    heroUrl:     `${API_BASE}/khipu-arq-2-diplomatica/640/360`,
-    planetaUrl:  `${API_BASE}/planeta-luna-mama-killa/200/200`,
-    elementoUrl: `${API_BASE}/elemento-agua-2/200/200`,
-    colorUrl:    `${API_BASE}/textil-andino-morado/200/200`,
-    glifoUrl:    `${API_BASE}/petroglifo-andino-2/200/200` },
-  { numero: 3,  nombre: 'La Creadora',    tagline: 'Expresión · Alegría · Arte',           color: '#E85D4D', colorName: 'Rojo sol',       elemento: 'Aire',   planeta: 'Júpiter',  glifo: '♃', tipo: 'simple',  esencia: 'El nudo de la palabra que celebra. Vives para expresar lo que otros sienten y no nombran. Arte, voz, color, juego.',
-    heroUrl:     `${API_BASE}/khipu-arq-3-creadora/640/360`,
-    planetaUrl:  `${API_BASE}/planeta-jupiter/200/200`,
-    elementoUrl: `${API_BASE}/elemento-aire-3/200/200`,
-    colorUrl:    `${API_BASE}/textil-andino-rojo-sol/200/200`,
-    glifoUrl:    `${API_BASE}/petroglifo-andino-3/200/200` },
-  { numero: 4,  nombre: 'La Constructora',tagline: 'Estructura · Disciplina · Durabilidad',color: '#00897B', colorName: 'Verde sagrado',  elemento: 'Tierra', planeta: 'Saturno',  glifo: '♄', tipo: 'simple',  esencia: 'El nudo que sostiene. Lo que tocas dura. Disciplina natural, orden ancestral, casa firme sobre piedra.',
-    heroUrl:     `${API_BASE}/khipu-arq-4-constructora/640/360`,
-    planetaUrl:  `${API_BASE}/planeta-saturno-anillos/200/200`,
-    elementoUrl: `${API_BASE}/elemento-tierra-4/200/200`,
-    colorUrl:    `${API_BASE}/textil-andino-verde/200/200`,
-    glifoUrl:    `${API_BASE}/petroglifo-andino-4/200/200` },
-  { numero: 5,  nombre: 'La Libertad',    tagline: 'Cambio · Movimiento · Viaje',          color: '#7B2D8E', colorName: 'Morado místico', elemento: 'Aire',   planeta: 'Mercurio', glifo: '☿', tipo: 'simple',  esencia: 'El nudo del viento. Cinco direcciones, cinco sentidos, cinco caminos. Vives para soltar lo que aprieta, para moverte y aprender.',
-    heroUrl:     `${API_BASE}/khipu-arq-5-libertad/640/360`,
-    planetaUrl:  `${API_BASE}/planeta-mercurio/200/200`,
-    elementoUrl: `${API_BASE}/elemento-aire-5/200/200`,
-    colorUrl:    `${API_BASE}/textil-andino-morado-mistico/200/200`,
-    glifoUrl:    `${API_BASE}/petroglifo-andino-5/200/200` },
-  { numero: 6,  nombre: 'La Guardiana',   tagline: 'Hogar · Amor · Responsabilidad',       color: '#C0392B', colorName: 'Rojo pachamama', elemento: 'Tierra', planeta: 'Venus',    glifo: '♀', tipo: 'simple',  esencia: 'El nudo del hogar. La gente se cobija en ti sin pedirlo. Belleza, armonía, cuidado — y el aprendizaje de cuidarte tú primero.',
-    heroUrl:     `${API_BASE}/khipu-arq-6-guardiana/640/360`,
-    planetaUrl:  `${API_BASE}/planeta-venus-amor/200/200`,
-    elementoUrl: `${API_BASE}/elemento-tierra-6/200/200`,
-    colorUrl:    `${API_BASE}/textil-andino-rojo-pachamama/200/200`,
-    glifoUrl:    `${API_BASE}/petroglifo-andino-6/200/200` },
-  { numero: 7,  nombre: 'La Sabia',       tagline: 'Introspección · Misterio · Estudio',   color: '#2D2A33', colorName: 'Carbón andino',  elemento: 'Agua',   planeta: 'Neptuno',  glifo: '♆', tipo: 'simple',  esencia: 'El nudo de la pregunta profunda. No buscas la respuesta rápida — buscas la verdadera. Tu sabiduría es la soledad fértil.',
-    heroUrl:     `${API_BASE}/khipu-arq-7-sabia/640/360`,
-    planetaUrl:  `${API_BASE}/planeta-neptuno-azul/200/200`,
-    elementoUrl: `${API_BASE}/elemento-agua-7/200/200`,
-    colorUrl:    `${API_BASE}/textil-andino-carbon/200/200`,
-    glifoUrl:    `${API_BASE}/petroglifo-andino-7/200/200` },
-  { numero: 8,  nombre: 'La Soberana',    tagline: 'Poder · Abundancia · Cosecha',         color: '#B8941E', colorName: 'Oro profundo',   elemento: 'Tierra', planeta: 'Saturno',  glifo: '∞', tipo: 'simple',  esencia: 'El nudo infinito. El que conoce el peso real del poder. Materia, dinero, justicia, autoridad — administras lo que otros no se atreven.',
-    heroUrl:     `${API_BASE}/khipu-arq-8-soberana/640/360`,
-    planetaUrl:  `${API_BASE}/planeta-saturno-poder/200/200`,
-    elementoUrl: `${API_BASE}/elemento-tierra-8/200/200`,
-    colorUrl:    `${API_BASE}/textil-andino-oro-profundo/200/200`,
-    glifoUrl:    `${API_BASE}/petroglifo-andino-8/200/200` },
-  { numero: 9,  nombre: 'La Compasiva',   tagline: 'Cierre · Sabiduría · Servicio',        color: '#E85D4D', colorName: 'Rojo atardecer', elemento: 'Fuego',  planeta: 'Marte',    glifo: '♂', tipo: 'simple',  esencia: 'El nudo que cierra. El alma vieja que vino a soltar. Tu compasión es altura — no apegas, liberas. Cada despedida te hace más sabia.',
-    heroUrl:     `${API_BASE}/khipu-arq-9-compasiva/640/360`,
-    planetaUrl:  `${API_BASE}/planeta-marte-rojo/200/200`,
-    elementoUrl: `${API_BASE}/elemento-fuego-9/200/200`,
-    colorUrl:    `${API_BASE}/textil-andino-atardecer/200/200`,
-    glifoUrl:    `${API_BASE}/petroglifo-andino-9/200/200` },
-  { numero: 11, nombre: 'La Iluminadora', tagline: 'Maestro Espiritual · Faro',            color: '#D4AF37', colorName: 'Oro inti',       elemento: 'Éter',   planeta: 'Urano',    glifo: '⚹', tipo: 'maestro', esencia: 'El nudo del faro. Maestro 11. No reduces a 2 — duplicas tu luz. Iluminas a otros antes de saber que iluminas. Carga alta, gracia mayor.',
-    heroUrl:     `${API_BASE}/khipu-arq-11-iluminadora/640/360`,
-    planetaUrl:  `${API_BASE}/planeta-urano/200/200`,
-    elementoUrl: `${API_BASE}/elemento-eter-11/200/200`,
-    colorUrl:    `${API_BASE}/textil-andino-oro-maestro/200/200`,
-    glifoUrl:    `${API_BASE}/petroglifo-andino-11-maestro/200/200` },
-  { numero: 22, nombre: 'La Arquitecta',  tagline: 'Maestro Constructor · Legado',         color: '#7B2D8E', colorName: 'Morado místico', elemento: 'Éter',   planeta: 'Plutón',   glifo: '⚸', tipo: 'maestro', esencia: 'El nudo del legado. Maestro 22. Construyes lo que sobrevive a quien lo construyó. Visión + manos. La obra que deja huella en la pachamama.',
-    heroUrl:     `${API_BASE}/khipu-arq-22-arquitecta/640/360`,
-    planetaUrl:  `${API_BASE}/planeta-pluton/200/200`,
-    elementoUrl: `${API_BASE}/elemento-eter-22/200/200`,
-    colorUrl:    `${API_BASE}/textil-andino-morado-maestro/200/200`,
-    glifoUrl:    `${API_BASE}/petroglifo-andino-22-maestro/200/200` }
+  { numero: 1,  nombre: 'El Iniciador',   tagline: 'Liderazgo · Acción · Origen',         color: '#D4AF37', colorName: 'Oro inti',       elemento: 'Fuego',  planeta: 'Sol',      glifo: '☉', tipo: 'simple',  esencia: 'El nudo que inaugura. Cada khipu empieza con un 1 — la voluntad de ser. Liderazgo natural, energía de origen, pionero por derecho propio.' },
+  { numero: 2,  nombre: 'La Diplomática', tagline: 'Equilibrio · Receptividad · Pareja',   color: '#A155B4', colorName: 'Morado tenue',   elemento: 'Agua',   planeta: 'Luna',     glifo: '☽', tipo: 'simple',  esencia: 'El nudo del puente. Une lo que está separado. Tu sabiduría es la escucha — donde el 1 impone, el 2 teje.' },
+  { numero: 3,  nombre: 'La Creadora',    tagline: 'Expresión · Alegría · Arte',           color: '#E85D4D', colorName: 'Rojo sol',       elemento: 'Aire',   planeta: 'Júpiter',  glifo: '♃', tipo: 'simple',  esencia: 'El nudo de la palabra que celebra. Vives para expresar lo que otros sienten y no nombran. Arte, voz, color, juego.' },
+  { numero: 4,  nombre: 'La Constructora',tagline: 'Estructura · Disciplina · Durabilidad',color: '#00897B', colorName: 'Verde sagrado',  elemento: 'Tierra', planeta: 'Saturno',  glifo: '♄', tipo: 'simple',  esencia: 'El nudo que sostiene. Lo que tocas dura. Disciplina natural, orden ancestral, casa firme sobre piedra.' },
+  { numero: 5,  nombre: 'La Libertad',    tagline: 'Cambio · Movimiento · Viaje',          color: '#7B2D8E', colorName: 'Morado místico', elemento: 'Aire',   planeta: 'Mercurio', glifo: '☿', tipo: 'simple',  esencia: 'El nudo del viento. Cinco direcciones, cinco sentidos, cinco caminos. Vives para soltar lo que aprieta, para moverte y aprender.' },
+  { numero: 6,  nombre: 'La Guardiana',   tagline: 'Hogar · Amor · Responsabilidad',       color: '#C0392B', colorName: 'Rojo pachamama', elemento: 'Tierra', planeta: 'Venus',    glifo: '♀', tipo: 'simple',  esencia: 'El nudo del hogar. La gente se cobija en ti sin pedirlo. Belleza, armonía, cuidado — y el aprendizaje de cuidarte tú primero.' },
+  { numero: 7,  nombre: 'La Sabia',       tagline: 'Introspección · Misterio · Estudio',   color: '#2D2A33', colorName: 'Carbón andino',  elemento: 'Agua',   planeta: 'Neptuno',  glifo: '♆', tipo: 'simple',  esencia: 'El nudo de la pregunta profunda. No buscas la respuesta rápida — buscas la verdadera. Tu sabiduría es la soledad fértil.' },
+  { numero: 8,  nombre: 'La Soberana',    tagline: 'Poder · Abundancia · Cosecha',         color: '#B8941E', colorName: 'Oro profundo',   elemento: 'Tierra', planeta: 'Saturno',  glifo: '∞', tipo: 'simple',  esencia: 'El nudo infinito. El que conoce el peso real del poder. Materia, dinero, justicia, autoridad — administras lo que otros no se atreven.' },
+  { numero: 9,  nombre: 'La Compasiva',   tagline: 'Cierre · Sabiduría · Servicio',        color: '#E85D4D', colorName: 'Rojo atardecer', elemento: 'Fuego',  planeta: 'Marte',    glifo: '♂', tipo: 'simple',  esencia: 'El nudo que cierra. El alma vieja que vino a soltar. Tu compasión es altura — no apegas, liberas. Cada despedida te hace más sabia.' },
+  { numero: 11, nombre: 'La Iluminadora', tagline: 'Maestro Espiritual · Faro',            color: '#D4AF37', colorName: 'Oro inti',       elemento: 'Éter',   planeta: 'Urano',    glifo: '⚹', tipo: 'maestro', esencia: 'El nudo del faro. Maestro 11. No reduces a 2 — duplicas tu luz. Iluminas a otros antes de saber que iluminas. Carga alta, gracia mayor.' },
+  { numero: 22, nombre: 'La Arquitecta',  tagline: 'Maestro Constructor · Legado',         color: '#7B2D8E', colorName: 'Morado místico', elemento: 'Éter',   planeta: 'Plutón',   glifo: '⚸', tipo: 'maestro', esencia: 'El nudo del legado. Maestro 22. Construyes lo que sobrevive a quien lo construyó. Visión + manos. La obra que deja huella en la pachamama.' }
 ];
 
 /* SVG glyphs por arquetipo (imagen vectorial = imagen oficial) */
@@ -528,17 +468,6 @@ const famososData = {
   ]
 };
 
-/* Inyecta fotoUrl en cada famoso (mockea endpoint /api/famosos/{slug}/avatar.png)
-   Usa ui-avatars.com para que cada foto venga de una URL externa pintada con el gradient del arquetipo */
-Object.keys(famososData).forEach(num => {
-  famososData[num].forEach(f => {
-    const colorMatch = f.grad.match(/#([0-9A-Fa-f]{6})/g) || ['#7B2D8E'];
-    const bg = colorMatch[0].replace('#', '');
-    const name = encodeURIComponent(f.nombre.replace(/\./g, '').trim());
-    f.fotoUrl = `https://ui-avatars.com/api/?name=${name}&background=${bg}&color=fff&size=200&bold=true&font-size=0.42&rounded=true`;
-  });
-});
-
 /* Compatibilidades (relación entre arquetipos) */
 const compatData = {
   1: [2, 3, 5],   2: [4, 6, 8],   3: [1, 5, 7],
@@ -597,42 +526,22 @@ function openArquetipoMaestro(num) {
   hero.style.background = `linear-gradient(135deg, ${a.color}22, ${a.color}05)`;
   hero.style.color = a.color;
 
-  // ━━━ HERO IMAGE (slot 2 · PA2) — cargada desde backend
-  const heroImg = document.getElementById('maestroHeroImg');
-  heroImg.classList.remove('loaded');
-  heroImg.src = a.heroUrl;
-  heroImg.alt = `Arquetipo ${a.nombre}`;
-  heroImg.onload = () => heroImg.classList.add('loaded');
+  // Símbolo principal (SVG dinámico)
+  const svg = document.getElementById('maestroSvg');
+  svg.innerHTML = arquetipoGlyphSvg[a.numero] || '';
+  svg.setAttribute('stroke', a.color);
 
-  // Badge de número con color del arquetipo
-  document.getElementById('maestroNum').style.background = a.color;
-
-  // ━━━ 4 SÍMBOLOS SAGRADOS — imágenes desde backend (sym-cards)
-  setSymbolImage('symPlanetImg', a.planetaUrl, `Planeta ${a.planeta}`);
+  // 4 símbolos sagrados
+  document.getElementById('symPlanetSvg').innerHTML  = planetaSvg[a.planeta]  || '';
   document.getElementById('symPlanetName').textContent = a.planeta;
-
-  setSymbolImage('symElementImg', a.elementoUrl, `Elemento ${a.elemento}`);
+  document.getElementById('symElementSvg').innerHTML = elementoSvg[a.elemento] || '';
   document.getElementById('symElementName').textContent = a.elemento;
-
-  setSymbolImage('symColorImg', a.colorUrl, `Textil ${a.colorName}`);
+  document.getElementById('symColorSwatch').style.background = a.color;
   document.getElementById('symColorName').textContent = a.colorName;
-  // Borde con el color sagrado del arquetipo
-  document.getElementById('symColorImg').parentElement.style.boxShadow = `inset 0 0 0 3px ${a.color}`;
-
-  setSymbolImage('symGlyphImg', a.glifoUrl, `Glifo del nudo ${a.numero}`);
+  document.getElementById('symGlyph').textContent = a.glifo;
   document.getElementById('symGlyphName').textContent = a.tipo === 'maestro' ? 'Glifo Maestro' : 'Glifo del Nudo';
 
   goTo('arquetipo-maestro');
-}
-
-/* Helper — carga una imagen sym-card con efecto fade-in al terminar de bajar del backend */
-function setSymbolImage(id, url, alt) {
-  const img = document.getElementById(id);
-  if (!img) return;
-  img.classList.remove('loaded');
-  img.src = url;
-  img.alt = alt;
-  img.onload = () => img.classList.add('loaded');
 }
 
 /* Abre la pantalla Detalle desde Maestro */
@@ -650,15 +559,10 @@ function openArquetipoDetalle() {
   document.getElementById('detalleIntro').textContent =
     `${famosos.length} almas que tejieron su khipu con la vibración ${a.numero}. Sus vidas son un mapa de cómo este número se expresa cuando se vive desde la luz.`;
 
-  // ━━━ Personalidades famosas (slot 3 · PA2) — fotos descargadas desde backend
+  // Personalidades (mínimo 4 con "imagen" = avatar gradient)
   document.getElementById('famososList').innerHTML = famosos.map(f => `
     <div class="famoso-card">
-      <div class="famoso-ava" style="background:${f.grad}">
-        <img class="famoso-foto" src="${f.fotoUrl}" alt="${f.nombre}"
-             loading="lazy"
-             onload="this.classList.add('loaded')"
-             onerror="this.style.display='none'; this.parentElement.innerHTML='${f.iniciales}';">
-      </div>
+      <div class="famoso-ava" style="background:${f.grad}">${f.iniciales}</div>
       <div class="famoso-info">
         <strong>${f.nombre}</strong>
         <span class="famoso-area">${f.area}</span>
