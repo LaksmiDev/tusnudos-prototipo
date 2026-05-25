@@ -177,7 +177,7 @@
       <input type="password" class="input" placeholder="••••••••" value="••••••••">
     </div>
 
-    <button class="btn btn-link" style="align-self:flex-end; margin:0 0 12px;">¿Olvidaste tu contraseña?</button>
+    <button class="btn btn-link" onclick="goTo('forgot')" style="align-self:flex-end; margin:0 0 12px;">¿Olvidaste tu contraseña?</button>
 
     <button class="btn btn-primary" onclick="goTo('home')">Entrar a mi khipu</button>
 
@@ -275,7 +275,7 @@
   <div class="top-bar">
     <button class="back" onclick="goTo('home')">←</button>
     <span class="title">Mi Khipu</span>
-    <button class="right-action">⋯</button>
+    <button class="right-action" onclick="openShare('khipu')">⋯</button>
   </div>
 
   <div class="content">
@@ -296,7 +296,7 @@
     <div class="khipu-main-cord"></div>
 
     <div class="khipu-cord">
-      <div class="nudo" onclick="showNudoDetail('Camino')">
+      <div class="nudo" onclick="openNudo('camino')">
         <div class="nudo-circle">11</div>
         <div class="nudo-info">
           <div class="nudo-name">Camino de Vida</div>
@@ -305,7 +305,7 @@
         <span class="chip chip-master">M</span>
       </div>
 
-      <div class="nudo" onclick="showNudoDetail('Misión')">
+      <div class="nudo" onclick="openNudo('mision')">
         <div class="nudo-circle">7</div>
         <div class="nudo-info">
           <div class="nudo-name">Misión / Destino</div>
@@ -313,7 +313,7 @@
         </div>
       </div>
 
-      <div class="nudo" onclick="showNudoDetail('Alma')">
+      <div class="nudo" onclick="openNudo('alma')">
         <div class="nudo-circle">3</div>
         <div class="nudo-info">
           <div class="nudo-name">Alma</div>
@@ -321,7 +321,7 @@
         </div>
       </div>
 
-      <div class="nudo" onclick="showNudoDetail('Personalidad')">
+      <div class="nudo" onclick="openNudo('personalidad')">
         <div class="nudo-circle">4</div>
         <div class="nudo-info">
           <div class="nudo-name">Personalidad</div>
@@ -329,7 +329,7 @@
         </div>
       </div>
 
-      <div class="nudo" onclick="showNudoDetail('Karma')">
+      <div class="nudo" onclick="openNudo('karma')">
         <div class="nudo-circle">16</div>
         <div class="nudo-info">
           <div class="nudo-name">Deuda Kármica</div>
@@ -338,7 +338,7 @@
         <span class="chip chip-karma">K</span>
       </div>
 
-      <div class="nudo" onclick="showNudoDetail('Puente')">
+      <div class="nudo" onclick="openNudo('puente')">
         <div class="nudo-circle">2</div>
         <div class="nudo-info">
           <div class="nudo-name">Puente Iniciático</div>
@@ -437,7 +437,7 @@
       <span class="title">Quipu</span>
       <span class="tiny gold">● en línea</span>
     </div>
-    <button class="right-action">⋯</button>
+    <button class="right-action" onclick="openShare('chat')">⋯</button>
   </div>
 
   <div class="chat-area" id="chatArea">
@@ -489,9 +489,11 @@
       <p class="subtle mt-8">Después de la estructura del 4, viene el viento. Este año todo se mueve — viaje, trabajo, relaciones. Suelta el control y sigue la corriente.</p>
     </div>
 
+    <button class="btn btn-ghost mt-12" onclick="goTo('patron')">📐 Ver Mi Patrón del Mes</button>
+
     <h3 class="h-section mt-20">Mes a mes</h3>
 
-    <div class="card card-clickable">
+    <div class="card card-clickable" onclick="openMonth('marzo')">
       <div class="flex-between">
         <div>
           <div class="tiny">MARZO · AHORA</div>
@@ -501,7 +503,7 @@
       </div>
     </div>
 
-    <div class="card card-clickable">
+    <div class="card card-clickable" onclick="openMonth('abril')">
       <div class="flex-between">
         <div>
           <div class="tiny">ABRIL</div>
@@ -511,7 +513,7 @@
       </div>
     </div>
 
-    <div class="card card-clickable">
+    <div class="card card-clickable" onclick="openMonth('mayo')">
       <div class="flex-between">
         <div>
           <div class="tiny">MAYO</div>
@@ -521,13 +523,33 @@
       </div>
     </div>
 
-    <div class="card card-clickable">
+    <div class="card card-clickable" onclick="openMonth('junio')">
       <div class="flex-between">
         <div>
           <div class="tiny">JUNIO</div>
           <div class="h-card mt-8">Mes Personal 7 — Pausa</div>
         </div>
         <div style="font-family:var(--font-display); font-size:24px;" class="gold">7</div>
+      </div>
+    </div>
+
+    <div class="card card-clickable" onclick="openMonth('julio')">
+      <div class="flex-between">
+        <div>
+          <div class="tiny">JULIO</div>
+          <div class="h-card mt-8">Mes Personal 8 — Poder</div>
+        </div>
+        <div style="font-family:var(--font-display); font-size:24px;" class="gold">8</div>
+      </div>
+    </div>
+
+    <div class="card card-clickable" onclick="openMonth('agosto')">
+      <div class="flex-between">
+        <div>
+          <div class="tiny">AGOSTO</div>
+          <div class="h-card mt-8">Mes Personal 9 — Cierre</div>
+        </div>
+        <div style="font-family:var(--font-display); font-size:24px;" class="gold">9</div>
       </div>
     </div>
   </div>
@@ -549,7 +571,7 @@
   <div class="top-bar">
     <button class="back" onclick="goTo('compat')">←</button>
     <span class="title">Círculo</span>
-    <button class="right-action">+</button>
+    <button class="right-action" onclick="goTo('add-friend')">+</button>
   </div>
 
   <div class="content">
@@ -601,7 +623,8 @@
       <span class="chip">64</span>
     </div>
 
-    <button class="btn btn-ghost mt-16">+ Tejer a alguien nuevo</button>
+    <button class="btn btn-ghost mt-16" onclick="goTo('add-friend')">+ Tejer a alguien nuevo</button>
+    <button class="btn btn-link mt-12" onclick="goTo('family')" style="width:100%;">👪 Ver mi Khipu Familiar →</button>
   </div>
 
   <nav class="bottom-nav">
@@ -621,7 +644,7 @@
   <div class="top-bar">
     <button class="back" onclick="goTo('home')">←</button>
     <span class="title">Diario del Alma</span>
-    <button class="right-action">🔍</button>
+    <button class="right-action" onclick="toggleDiarySearch()">🔍</button>
   </div>
 
   <div class="content">
@@ -661,7 +684,7 @@
     </div>
   </div>
 
-  <button class="fab" onclick="alert('Nueva entrada del diario')">+</button>
+  <button class="fab" onclick="goTo('diary-compose')">+</button>
 
   <nav class="bottom-nav">
     <button class="nav-item" onclick="goTo('home')"><span class="ico">🏠</span><span>Inicio</span></button>
@@ -680,7 +703,7 @@
   <div class="top-bar">
     <button class="back" onclick="goTo('home')">←</button>
     <span class="title">Perfil</span>
-    <button class="right-action">⚙</button>
+    <button class="right-action" onclick="goTo('settings')">⚙</button>
   </div>
 
   <div class="content">
@@ -703,6 +726,10 @@
         <span class="left"><span class="ico">☀️</span> Mi Retorno Solar</span>
         <span class="chevron">›</span>
       </li>
+      <li class="menu-item" onclick="goTo('patron')">
+        <span class="left"><span class="ico">📐</span> Mi Patrón del Mes</span>
+        <span class="chevron">›</span>
+      </li>
       <li class="menu-item" onclick="goTo('diary')">
         <span class="left"><span class="ico">📖</span> Diario del Alma</span>
         <span class="chevron">›</span>
@@ -711,19 +738,23 @@
         <span class="left"><span class="ico">👥</span> Mi Círculo</span>
         <span class="chevron">›</span>
       </li>
-      <li class="menu-item">
+      <li class="menu-item" onclick="goTo('family')">
+        <span class="left"><span class="ico">👪</span> Khipu Familiar</span>
+        <span class="chevron">›</span>
+      </li>
+      <li class="menu-item" onclick="goTo('notifications')">
         <span class="left"><span class="ico">🔔</span> Notificaciones</span>
         <span class="chevron">›</span>
       </li>
-      <li class="menu-item">
+      <li class="menu-item" onclick="goTo('premium')">
         <span class="left"><span class="ico">💎</span> Plan Premium</span>
         <span class="chevron">›</span>
       </li>
-      <li class="menu-item">
+      <li class="menu-item" onclick="goTo('language')">
         <span class="left"><span class="ico">🌐</span> Idioma · Español</span>
         <span class="chevron">›</span>
       </li>
-      <li class="menu-item">
+      <li class="menu-item" onclick="goTo('help')">
         <span class="left"><span class="ico">❓</span> Ayuda</span>
         <span class="chevron">›</span>
       </li>
@@ -744,6 +775,657 @@
     <button class="nav-item active" onclick="goTo('profile')"><span class="ico">👤</span><span>Perfil</span></button>
   </nav>
 </section>
+
+<!-- ================================================
+     15. RECUPERAR CONTRASEÑA
+     ================================================ -->
+<section class="screen" id="forgot">
+  <div class="status-bar"><span>9:41</span><span class="status-icons">●●● 􀙇 􀛨</span></div>
+  <div class="top-bar">
+    <button class="back" onclick="goBack()">←</button>
+    <span class="title">Recuperar</span>
+    <span></span>
+  </div>
+  <div class="content no-nav">
+    <h1 class="h-display mb-12">Reanuda el khipu</h1>
+    <p class="subtle mb-20">Te enviaremos un enlace para volver a tu cuenta. Tus nudos no se han movido.</p>
+
+    <div class="input-group">
+      <label class="input-label">Email</label>
+      <input type="email" class="input" placeholder="tu@correo.com">
+    </div>
+
+    <button class="btn btn-primary mt-12" onclick="showToast('Enlace enviado a tu correo'); setTimeout(()=>goTo('login'), 1200)">Enviar enlace</button>
+    <button class="btn btn-link mt-8" onclick="goTo('login')" style="width:100%;">Volver al inicio</button>
+  </div>
+</section>
+
+<!-- ================================================
+     16. NUDO DETAIL (lectura profunda)
+     ================================================ -->
+<section class="screen" id="nudo-detail">
+  <div class="status-bar"><span>9:41</span><span class="status-icons">●●● 􀙇 􀛨</span></div>
+  <div class="top-bar">
+    <button class="back" onclick="goBack()">←</button>
+    <span class="title" id="nudoTitle">Nudo</span>
+    <button class="right-action" onclick="openShare('nudo')">↗</button>
+  </div>
+
+  <div class="content">
+    <div class="text-center mt-12">
+      <div class="nudo-hero">
+        <div class="nudo-hero-circle" id="nudoHeroNum">11</div>
+      </div>
+      <div class="tiny mt-8" id="nudoHeroLabel">CAMINO DE VIDA</div>
+      <h1 class="h-display mt-8" id="nudoHeroName">Maestro 11 · La iluminadora</h1>
+    </div>
+
+    <div class="card-elevated mt-20">
+      <div class="tiny">ESENCIA</div>
+      <p class="subtle mt-8" id="nudoEsencia">Tu propósito es elevar la conciencia de quienes te rodean. El Maestro 11 brilla como un faro — y como todo faro, necesita su propio descanso para no apagarse.</p>
+    </div>
+
+    <h3 class="h-section mt-20">Cuando estás en luz</h3>
+    <div class="card">
+      <p class="subtle" id="nudoLuz">Inspiras sin esfuerzo. La intuición te llega antes que la palabra. Tu sola presencia ordena el ambiente.</p>
+    </div>
+
+    <h3 class="h-section mt-16">Cuando estás en sombra</h3>
+    <div class="card">
+      <p class="subtle" id="nudoSombra">Te agotas cargando lo que no es tuyo. Pierdes confianza en tu propia voz. Sientes que nadie te entiende.</p>
+    </div>
+
+    <h3 class="h-section mt-16">Práctica del día</h3>
+    <div class="card-elevated">
+      <p class="subtle" id="nudoPractica">Antes de responder hoy a cualquier petición, pregúntate: ¿esto suma a mi misión o me distrae de ella?</p>
+    </div>
+
+    <button class="btn btn-primary mt-20" onclick="goTo('chat')">💬 Preguntar a Quipu</button>
+    <button class="btn btn-ghost mt-8" onclick="goTo('khipu')">Volver al Khipu</button>
+  </div>
+</section>
+
+<!-- ================================================
+     17. AJUSTES
+     ================================================ -->
+<section class="screen" id="settings">
+  <div class="status-bar"><span>9:41</span><span class="status-icons">●●● 􀙇 􀛨</span></div>
+  <div class="top-bar">
+    <button class="back" onclick="goBack()">←</button>
+    <span class="title">Ajustes</span>
+    <span></span>
+  </div>
+
+  <div class="content">
+    <h3 class="h-section">Cuenta</h3>
+    <ul class="menu-list">
+      <li class="menu-item">
+        <span class="left"><span class="ico">📝</span> Editar nombre</span>
+        <span class="chevron">›</span>
+      </li>
+      <li class="menu-item">
+        <span class="left"><span class="ico">📅</span> Fecha de nacimiento</span>
+        <span class="chevron">›</span>
+      </li>
+      <li class="menu-item">
+        <span class="left"><span class="ico">🔐</span> Cambiar contraseña</span>
+        <span class="chevron">›</span>
+      </li>
+    </ul>
+
+    <h3 class="h-section mt-20">Apariencia</h3>
+    <ul class="menu-list">
+      <li class="menu-item" onclick="toggleTheme()">
+        <span class="left"><span class="ico">🌙</span> Modo Noche</span>
+        <span class="toggle on" id="themeToggle"><span class="toggle-knob"></span></span>
+      </li>
+      <li class="menu-item">
+        <span class="left"><span class="ico">🔤</span> Tamaño de texto</span>
+        <span class="chevron">›</span>
+      </li>
+    </ul>
+
+    <h3 class="h-section mt-20">Privacidad</h3>
+    <ul class="menu-list">
+      <li class="menu-item">
+        <span class="left"><span class="ico">🔒</span> Privacidad de mi khipu</span>
+        <span class="subtle">Solo mi círculo</span>
+      </li>
+      <li class="menu-item" onclick="toggleNotifications()">
+        <span class="left"><span class="ico">🔔</span> Notificaciones push</span>
+        <span class="toggle on" id="pushToggle"><span class="toggle-knob"></span></span>
+      </li>
+      <li class="menu-item" onclick="toggleVoice()">
+        <span class="left"><span class="ico">🎙️</span> Quipu por voz</span>
+        <span class="toggle off" id="voiceToggle"><span class="toggle-knob"></span></span>
+      </li>
+    </ul>
+
+    <h3 class="h-section mt-20">Sobre TusNudos</h3>
+    <ul class="menu-list">
+      <li class="menu-item" onclick="goTo('help')">
+        <span class="left"><span class="ico">❓</span> Ayuda</span>
+        <span class="chevron">›</span>
+      </li>
+      <li class="menu-item">
+        <span class="left"><span class="ico">📜</span> Términos y privacidad</span>
+        <span class="chevron">›</span>
+      </li>
+      <li class="menu-item">
+        <span class="left"><span class="ico">⭐</span> Calificar la app</span>
+        <span class="chevron">›</span>
+      </li>
+      <li class="menu-item" style="color:#E87A7A;">
+        <span class="left"><span class="ico">🗑️</span> Eliminar mi cuenta</span>
+        <span class="chevron">›</span>
+      </li>
+    </ul>
+  </div>
+</section>
+
+<!-- ================================================
+     18. NOTIFICACIONES
+     ================================================ -->
+<section class="screen" id="notifications">
+  <div class="status-bar"><span>9:41</span><span class="status-icons">●●● 􀙇 􀛨</span></div>
+  <div class="top-bar">
+    <button class="back" onclick="goBack()">←</button>
+    <span class="title">Notificaciones</span>
+    <button class="right-action" onclick="markAllRead()">Marcar leídas</button>
+  </div>
+
+  <div class="content">
+    <div class="notif-item unread" onclick="goTo('home')">
+      <div class="notif-icon" style="background:linear-gradient(135deg, var(--oro-inti), var(--oro-inti-soft));">☀️</div>
+      <div class="notif-body">
+        <div class="notif-title">Tu día 7 ya empezó</div>
+        <div class="notif-desc">Día de introspección. Tu intuición está afilada.</div>
+        <div class="notif-time">Hace 2 min</div>
+      </div>
+    </div>
+
+    <div class="notif-item unread" onclick="goTo('compat')">
+      <div class="notif-icon" style="background:linear-gradient(135deg, var(--morado-mistico), var(--rojo-pachamama));">∞</div>
+      <div class="notif-body">
+        <div class="notif-title">Ana subió su vibra</div>
+        <div class="notif-desc">Tu mejor amiga está en día 11 hoy. Resonancia alta con tu khipu.</div>
+        <div class="notif-time">Hace 1 hora</div>
+      </div>
+    </div>
+
+    <div class="notif-item" onclick="goTo('chat')">
+      <div class="notif-icon" style="background:linear-gradient(135deg, var(--morado-mistico), var(--carbon-deep));">💬</div>
+      <div class="notif-body">
+        <div class="notif-title">Quipu te dejó un mensaje</div>
+        <div class="notif-desc">"Algo en tu cuerda 4 está pidiendo atención..."</div>
+        <div class="notif-time">Ayer</div>
+      </div>
+    </div>
+
+    <div class="notif-item" onclick="goTo('solar')">
+      <div class="notif-icon" style="background:linear-gradient(135deg, var(--verde-sagrado), var(--oro-inti));">🌱</div>
+      <div class="notif-body">
+        <div class="notif-title">Cambio de mes personal</div>
+        <div class="notif-desc">Entras al Mes 5 — Libertad y movimiento.</div>
+        <div class="notif-time">Hace 3 días</div>
+      </div>
+    </div>
+
+    <div class="notif-item" onclick="goTo('diary')">
+      <div class="notif-icon" style="background:linear-gradient(135deg, var(--rojo-pachamama), var(--carbon-deep));">📖</div>
+      <div class="notif-body">
+        <div class="notif-title">Tu diario te extraña</div>
+        <div class="notif-desc">Hace 2 días que no escribes. ¿Cómo va el día?</div>
+        <div class="notif-time">Hace 4 días</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================================================
+     19. PLAN PREMIUM
+     ================================================ -->
+<section class="screen" id="premium">
+  <div class="status-bar"><span>9:41</span><span class="status-icons">●●● 􀙇 􀛨</span></div>
+  <div class="top-bar">
+    <button class="back" onclick="goBack()">←</button>
+    <span class="title">Premium</span>
+    <span></span>
+  </div>
+
+  <div class="content">
+    <div class="text-center">
+      <div class="premium-crown">💎</div>
+      <h1 class="h-display mt-8">Teje sin límites</h1>
+      <p class="subtle mt-8">Desata todo tu khipu y conecta con quien quieras.</p>
+    </div>
+
+    <div class="premium-features mt-20">
+      <div class="feat-row"><span class="feat-check">✓</span> Khipu Personal completo (27 nudos)</div>
+      <div class="feat-row"><span class="feat-check">✓</span> Retorno Solar año por año, mes a mes</div>
+      <div class="feat-row"><span class="feat-check">✓</span> Compatibilidad con personas ilimitadas</div>
+      <div class="feat-row"><span class="feat-check">✓</span> Khipu Familiar generacional</div>
+      <div class="feat-row"><span class="feat-check">✓</span> Quipu por voz</div>
+      <div class="feat-row"><span class="feat-check">✓</span> Diario sin límite + insights diarios</div>
+      <div class="feat-row"><span class="feat-check">✓</span> Sin anuncios, para siempre</div>
+    </div>
+
+    <div class="plan-card recommended" onclick="selectPlan(this, 'anual')">
+      <div class="plan-badge">RECOMENDADO · 40% off</div>
+      <div class="plan-name">Anual</div>
+      <div class="plan-price"><span class="big">S/ 89</span><span class="per">/año</span></div>
+      <div class="plan-sub">Solo S/ 7.40 al mes</div>
+    </div>
+
+    <div class="plan-card" onclick="selectPlan(this, 'mensual')">
+      <div class="plan-name">Mensual</div>
+      <div class="plan-price"><span class="big">S/ 14</span><span class="per">/mes</span></div>
+      <div class="plan-sub">Cancela cuando quieras</div>
+    </div>
+
+    <button class="btn btn-primary mt-16" onclick="showToast('Activando Premium...'); setTimeout(()=>goTo('home'), 1500)">Empezar 7 días gratis</button>
+    <p class="tiny text-center mt-12">Sin cobro hasta el día 7. Cancela en cualquier momento.</p>
+  </div>
+</section>
+
+<!-- ================================================
+     20. AYUDA
+     ================================================ -->
+<section class="screen" id="help">
+  <div class="status-bar"><span>9:41</span><span class="status-icons">●●● 􀙇 􀛨</span></div>
+  <div class="top-bar">
+    <button class="back" onclick="goBack()">←</button>
+    <span class="title">Ayuda</span>
+    <span></span>
+  </div>
+
+  <div class="content">
+    <h1 class="h-display mb-12">¿En qué te ayudo?</h1>
+
+    <div class="input-group">
+      <input type="text" class="input" placeholder="🔍 Buscar en la ayuda...">
+    </div>
+
+    <h3 class="h-section mt-20">Preguntas frecuentes</h3>
+
+    <div class="faq-item" onclick="toggleFaq(this)">
+      <div class="faq-q">¿Qué es un khipu? <span class="faq-toggle">+</span></div>
+      <div class="faq-a">Un khipu es el sistema andino de cuerdas anudadas usado por los incas para registrar información. En TusNudos usamos esta metáfora: tu nombre y tu fecha de nacimiento tejen 27 nudos que cuentan tu historia numerológica.</div>
+    </div>
+
+    <div class="faq-item" onclick="toggleFaq(this)">
+      <div class="faq-q">¿Cómo calculan mi camino de vida? <span class="faq-toggle">+</span></div>
+      <div class="faq-a">Sumamos día + mes + año de tu nacimiento y reducimos a un solo dígito (salvo los Maestros 11 y 22, que no se reducen). Es el sistema Decoz con tabla pitagórica K=2, V=4.</div>
+    </div>
+
+    <div class="faq-item" onclick="toggleFaq(this)">
+      <div class="faq-q">¿Mis datos son privados? <span class="faq-toggle">+</span></div>
+      <div class="faq-a">Sí. Tu khipu solo lo ves tú. Si decides añadir a alguien a tu círculo, solo se comparten los números que tú elijas mostrar.</div>
+    </div>
+
+    <div class="faq-item" onclick="toggleFaq(this)">
+      <div class="faq-q">¿Quipu usa mis mensajes para entrenar IA? <span class="faq-toggle">+</span></div>
+      <div class="faq-a">No. Tus conversaciones con Quipu son privadas y no se usan para entrenar modelos.</div>
+    </div>
+
+    <div class="faq-item" onclick="toggleFaq(this)">
+      <div class="faq-q">¿Cómo cancelo Premium? <span class="faq-toggle">+</span></div>
+      <div class="faq-a">En Ajustes → Plan Premium → Cancelar. Mantienes acceso hasta el final del periodo pagado.</div>
+    </div>
+
+    <h3 class="h-section mt-20">¿Algo más?</h3>
+    <button class="btn btn-ghost" onclick="showToast('Abriendo correo...')">📧 Escríbenos</button>
+    <button class="btn btn-ghost mt-8" onclick="goTo('chat')">💬 Pregunta a Quipu</button>
+  </div>
+</section>
+
+<!-- ================================================
+     21. TEJER A ALGUIEN NUEVO
+     ================================================ -->
+<section class="screen" id="add-friend">
+  <div class="status-bar"><span>9:41</span><span class="status-icons">●●● 􀙇 􀛨</span></div>
+  <div class="top-bar">
+    <button class="back" onclick="goBack()">←</button>
+    <span class="title">Tejer nuevo nudo</span>
+    <span></span>
+  </div>
+
+  <div class="content">
+    <h1 class="h-display mb-12">Añade a tu círculo</h1>
+    <p class="subtle mb-20">Solo necesitamos su nombre completo y fecha de nacimiento para entrelazar khipus.</p>
+
+    <div class="input-group">
+      <label class="input-label">Nombre completo</label>
+      <input type="text" class="input" placeholder="Ej. Diego Antonio Pérez">
+    </div>
+
+    <div class="input-group">
+      <label class="input-label">Fecha de nacimiento</label>
+      <input type="date" class="input" value="1992-06-15">
+    </div>
+
+    <div class="input-group">
+      <label class="input-label">Relación</label>
+      <div class="chip-row">
+        <button class="chip-select active">💛 Pareja</button>
+        <button class="chip-select">👫 Amigo/a</button>
+        <button class="chip-select">👪 Familia</button>
+        <button class="chip-select">💼 Trabajo</button>
+        <button class="chip-select">💘 Crush</button>
+      </div>
+    </div>
+
+    <div class="input-group">
+      <label class="input-label">Apodo (opcional)</label>
+      <input type="text" class="input" placeholder="Cómo le llamas">
+    </div>
+
+    <button class="btn btn-primary mt-16" onclick="showToast('Khipu tejido ✨'); setTimeout(()=>goTo('compat'), 1200)">Tejer khipu →</button>
+    <button class="btn btn-ghost mt-8" onclick="goBack()">Cancelar</button>
+  </div>
+</section>
+
+<!-- ================================================
+     22. NUEVA ENTRADA DIARIO
+     ================================================ -->
+<section class="screen" id="diary-compose">
+  <div class="status-bar"><span>9:41</span><span class="status-icons">●●● 􀙇 􀛨</span></div>
+  <div class="top-bar">
+    <button class="back" onclick="goBack()">←</button>
+    <span class="title">Nueva reflexión</span>
+    <button class="right-action" onclick="saveDiary()">Guardar</button>
+  </div>
+
+  <div class="content">
+    <p class="tiny">25 MAY · DÍA PERSONAL 7</p>
+    <h1 class="h-display mt-8 mb-16">¿Cómo te sientes?</h1>
+
+    <div class="mood-row">
+      <button class="mood active" onclick="selectMood(this, 'feliz')">😊<span>Bien</span></button>
+      <button class="mood" onclick="selectMood(this, 'triste')">🥺<span>Triste</span></button>
+      <button class="mood" onclick="selectMood(this, 'enojo')">😡<span>Enojo</span></button>
+      <button class="mood" onclick="selectMood(this, 'amor')">🥰<span>Amor</span></button>
+      <button class="mood" onclick="selectMood(this, 'paz')">😌<span>Paz</span></button>
+    </div>
+
+    <div class="input-group mt-20">
+      <label class="input-label">Tu reflexión</label>
+      <textarea class="input" rows="6" placeholder="Hoy noté que..."></textarea>
+    </div>
+
+    <div class="card-elevated mt-12">
+      <div class="tiny gold">💡 QUIPU SUGIERE</div>
+      <p class="subtle mt-8">Tu día 7 pide silencio. ¿Qué señal interna estuviste evitando hoy?</p>
+    </div>
+
+    <button class="btn btn-primary mt-16" onclick="saveDiary()">Anudar en mi khipu →</button>
+  </div>
+</section>
+
+<!-- ================================================
+     23. DETALLE DE MES
+     ================================================ -->
+<section class="screen" id="month-detail">
+  <div class="status-bar"><span>9:41</span><span class="status-icons">●●● 􀙇 􀛨</span></div>
+  <div class="top-bar">
+    <button class="back" onclick="goBack()">←</button>
+    <span class="title" id="monthTitle">Mes Personal</span>
+    <button class="right-action" onclick="openShare('month')">↗</button>
+  </div>
+
+  <div class="content">
+    <div class="text-center">
+      <p class="tiny" id="monthLabel">MARZO 2026</p>
+      <div style="font-family:var(--font-display); font-size:96px; font-weight:700; line-height:1;" class="gold" id="monthNum">4</div>
+      <h1 class="h-display mt-8" id="monthName">Cimientos</h1>
+    </div>
+
+    <div class="card-elevated mt-20">
+      <div class="tiny">ESTE MES</div>
+      <p class="subtle mt-8" id="monthDesc">Mes para construir estructura. Lo que siembres aquí durará — bases sólidas, rutinas, disciplina. No es mes de improvisar.</p>
+    </div>
+
+    <h3 class="h-section mt-20">Lo que sí</h3>
+    <div class="card">
+      <p class="subtle" id="monthSi">✓ Cerrar pendientes acumulados<br>✓ Ordenar finanzas y espacios<br>✓ Comprometerse con rutinas<br>✓ Trabajar con paciencia</p>
+    </div>
+
+    <h3 class="h-section mt-16">Lo que no</h3>
+    <div class="card">
+      <p class="subtle" id="monthNo">✗ Cambios drásticos sin planear<br>✗ Improvisar decisiones importantes<br>✗ Resistirse a la disciplina<br>✗ Quedarse en lo cómodo eternamente</p>
+    </div>
+
+    <h3 class="h-section mt-16">Días clave</h3>
+    <div class="day-grid">
+      <div class="day-key gold-bg"><div class="d-num">7</div><div class="d-lab">Pausa</div></div>
+      <div class="day-key"><div class="d-num">14</div><div class="d-lab">Decisión</div></div>
+      <div class="day-key purple-bg"><div class="d-num">21</div><div class="d-lab">Cierre</div></div>
+      <div class="day-key"><div class="d-num">28</div><div class="d-lab">Apertura</div></div>
+    </div>
+
+    <button class="btn btn-primary mt-20" onclick="goTo('chat')">💬 Preguntar a Quipu sobre este mes</button>
+  </div>
+</section>
+
+<!-- ================================================
+     24. KHIPU FAMILIAR (árbol generacional)
+     ================================================ -->
+<section class="screen" id="family">
+  <div class="status-bar"><span>9:41</span><span class="status-icons">●●● 􀙇 􀛨</span></div>
+  <div class="top-bar">
+    <button class="back" onclick="goBack()">←</button>
+    <span class="title">Khipu Familiar</span>
+    <button class="right-action" onclick="goTo('add-friend')">+</button>
+  </div>
+
+  <div class="content">
+    <h1 class="h-display mb-8">Tu linaje</h1>
+    <p class="subtle mb-20">Los números que vienen contigo desde tres generaciones atrás.</p>
+
+    <div class="generation">
+      <div class="gen-label">ABUELOS</div>
+      <div class="family-grid">
+        <div class="family-node" onclick="openFamily('abuelo-p')">
+          <div class="fn-circle">8</div>
+          <div class="fn-name">Abuelo P.</div>
+          <div class="fn-sub">Camino 8</div>
+        </div>
+        <div class="family-node" onclick="openFamily('abuela-p')">
+          <div class="fn-circle">3</div>
+          <div class="fn-name">Abuela P.</div>
+          <div class="fn-sub">Camino 3</div>
+        </div>
+        <div class="family-node" onclick="openFamily('abuelo-m')">
+          <div class="fn-circle">22</div>
+          <div class="fn-name">Abuelo M.</div>
+          <div class="fn-sub">Maestro 22</div>
+        </div>
+        <div class="family-node" onclick="openFamily('abuela-m')">
+          <div class="fn-circle">6</div>
+          <div class="fn-name">Abuela M.</div>
+          <div class="fn-sub">Camino 6</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="generation">
+      <div class="gen-label">PADRES</div>
+      <div class="family-grid">
+        <div class="family-node" onclick="openFamily('papa')">
+          <div class="fn-circle">5</div>
+          <div class="fn-name">Papá</div>
+          <div class="fn-sub">Camino 5</div>
+        </div>
+        <div class="family-node" onclick="openFamily('mama')">
+          <div class="fn-circle">9</div>
+          <div class="fn-name">Mamá</div>
+          <div class="fn-sub">Camino 9</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="generation">
+      <div class="gen-label">TÚ Y HERMANOS</div>
+      <div class="family-grid">
+        <div class="family-node active" onclick="openFamily('yo')">
+          <div class="fn-circle">11</div>
+          <div class="fn-name">Tú</div>
+          <div class="fn-sub">Maestro 11</div>
+        </div>
+        <div class="family-node" onclick="openFamily('lucia')">
+          <div class="fn-circle">3</div>
+          <div class="fn-name">Lucía</div>
+          <div class="fn-sub">Camino 3</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card-elevated mt-16">
+      <div class="tiny">PATRÓN FAMILIAR</div>
+      <div class="h-card mt-8">El número 3 se repite</div>
+      <p class="subtle mt-8">Tu abuela paterna y tu hermana cargan el mismo 3 — expresión creativa. Es el hilo que tejer juntas.</p>
+    </div>
+
+    <button class="btn btn-primary mt-16" onclick="goTo('chat')">💬 Pregúntale a Quipu por tu linaje</button>
+  </div>
+</section>
+
+<!-- ================================================
+     25. MI PATRÓN DEL MES
+     ================================================ -->
+<section class="screen" id="patron">
+  <div class="status-bar"><span>9:41</span><span class="status-icons">●●● 􀙇 􀛨</span></div>
+  <div class="top-bar">
+    <button class="back" onclick="goBack()">←</button>
+    <span class="title">Patrón del Mes</span>
+    <span></span>
+  </div>
+
+  <div class="content">
+    <p class="tiny text-center">MARZO 2026 · MES PERSONAL 4</p>
+    <h1 class="h-display text-center mt-8 mb-16">Tu patrón emocional</h1>
+
+    <div class="patron-chart">
+      <svg viewBox="0 0 320 160" width="100%">
+        <defs>
+          <linearGradient id="patg" x1="0" y1="0" x2="1" y2="0">
+            <stop offset="0%" stop-color="#D4AF37"/>
+            <stop offset="100%" stop-color="#7B2D8E"/>
+          </linearGradient>
+        </defs>
+        <polyline points="10,100 50,80 90,60 130,90 170,40 210,70 250,30 290,55 310,40"
+                  fill="none" stroke="url(#patg)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+        <circle cx="170" cy="40" r="6" fill="#D4AF37"/>
+        <circle cx="250" cy="30" r="6" fill="#D4AF37"/>
+      </svg>
+      <div class="patron-axis">
+        <span>S1</span><span>S2</span><span>S3</span><span>S4</span>
+      </div>
+    </div>
+
+    <div class="card mt-16">
+      <div class="tiny gold">PICO ENERGÉTICO</div>
+      <div class="h-card mt-8">Semana 3 (15-21 marzo)</div>
+      <p class="subtle">Tu energía sube. Aprovecha para decisiones importantes y conversaciones difíciles.</p>
+    </div>
+
+    <div class="card">
+      <div class="tiny" style="color:#E87A7A;">VALLE ENERGÉTICO</div>
+      <div class="h-card mt-8">Semana 1 (1-7 marzo)</div>
+      <p class="subtle">Baja energía. No fuerces. Descansa, escucha, observa.</p>
+    </div>
+
+    <h3 class="h-section mt-20">Patrón por emoción</h3>
+    <div class="emo-stat">
+      <div class="emo-label">😊 Bien</div>
+      <div class="emo-bar"><div class="emo-fill" style="width:62%;"></div></div>
+      <div class="emo-pct">62%</div>
+    </div>
+    <div class="emo-stat">
+      <div class="emo-label">😌 Paz</div>
+      <div class="emo-bar"><div class="emo-fill" style="width:48%; background:var(--verde-sagrado);"></div></div>
+      <div class="emo-pct">48%</div>
+    </div>
+    <div class="emo-stat">
+      <div class="emo-label">🥰 Amor</div>
+      <div class="emo-bar"><div class="emo-fill" style="width:35%; background:var(--rojo-pachamama);"></div></div>
+      <div class="emo-pct">35%</div>
+    </div>
+    <div class="emo-stat">
+      <div class="emo-label">🥺 Triste</div>
+      <div class="emo-bar"><div class="emo-fill" style="width:20%; background:var(--morado-mistico);"></div></div>
+      <div class="emo-pct">20%</div>
+    </div>
+
+    <button class="btn btn-primary mt-20" onclick="goTo('diary-compose')">Anudar lo de hoy</button>
+  </div>
+</section>
+
+<!-- ================================================
+     26. IDIOMA
+     ================================================ -->
+<section class="screen" id="language">
+  <div class="status-bar"><span>9:41</span><span class="status-icons">●●● 􀙇 􀛨</span></div>
+  <div class="top-bar">
+    <button class="back" onclick="goBack()">←</button>
+    <span class="title">Idioma</span>
+    <span></span>
+  </div>
+
+  <div class="content">
+    <h1 class="h-display mb-12">Elige tu lengua</h1>
+    <p class="subtle mb-20">Quipu te hablará en este idioma.</p>
+
+    <ul class="menu-list">
+      <li class="menu-item lang-item active" onclick="selectLang(this, 'es')">
+        <span class="left">🇵🇪 Español</span>
+        <span class="check">✓</span>
+      </li>
+      <li class="menu-item lang-item" onclick="selectLang(this, 'qu')">
+        <span class="left">🪢 Runasimi (Quechua)</span>
+        <span class="check"></span>
+      </li>
+      <li class="menu-item lang-item" onclick="selectLang(this, 'en')">
+        <span class="left">🇬🇧 English</span>
+        <span class="check"></span>
+      </li>
+      <li class="menu-item lang-item" onclick="selectLang(this, 'pt')">
+        <span class="left">🇧🇷 Português</span>
+        <span class="check"></span>
+      </li>
+      <li class="menu-item lang-item" onclick="selectLang(this, 'fr')">
+        <span class="left">🇫🇷 Français</span>
+        <span class="check"></span>
+      </li>
+    </ul>
+  </div>
+</section>
+
+<!-- ================================================
+     SHARE SHEET (modal flotante)
+     ================================================ -->
+<div class="share-sheet" id="shareSheet">
+  <div class="share-backdrop" onclick="closeShare()"></div>
+  <div class="share-card">
+    <div class="share-handle"></div>
+    <h3 class="h-section text-center">Compartir</h3>
+    <p class="subtle text-center mb-16" id="shareSubject">Mi khipu</p>
+    <div class="share-grid">
+      <button class="share-opt" onclick="doShare('wa')"><span class="so-ic">💚</span><span>WhatsApp</span></button>
+      <button class="share-opt" onclick="doShare('ig')"><span class="so-ic">📷</span><span>Instagram</span></button>
+      <button class="share-opt" onclick="doShare('tg')"><span class="so-ic">✈️</span><span>Telegram</span></button>
+      <button class="share-opt" onclick="doShare('tw')"><span class="so-ic">🐦</span><span>X / Twitter</span></button>
+      <button class="share-opt" onclick="doShare('link')"><span class="so-ic">🔗</span><span>Copiar link</span></button>
+      <button class="share-opt" onclick="doShare('img')"><span class="so-ic">🖼️</span><span>Imagen</span></button>
+    </div>
+    <button class="btn btn-ghost mt-12" onclick="closeShare()">Cancelar</button>
+  </div>
+</div>
+
+<!-- ================================================
+     TOAST
+     ================================================ -->
+<div class="toast" id="toast"></div>
 
 </div><!-- /app -->
 </div><!-- /phone-shell -->
